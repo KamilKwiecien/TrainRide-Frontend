@@ -3,6 +3,7 @@
 }
 
 .jumbotron-top h1{
+  margin: 0 auto;
   height: 125px;
   color: white;
   display: flex;

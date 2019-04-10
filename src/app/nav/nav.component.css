@@ -1,0 +1,30 @@
+#navbar {
+  margin: o auto;
+  background-color: #3d3d3d;
+  display: flex;
+  align-items: center;
+  align-content: space-between;
+  flex-wrap: wrap;
+}
+
+p {
+  height: 10px;
+  color: white;
+  margin-left: 20px;
+}
+
+.form-control {
+  margin-top: 2px;
+}
+
+.dropdown{
+  margin-left: 20px;
+  margin-top:5px;
+  margin-bottom:5px;
+}
+
+.dropdown-menu {
+  height: auto;
+  max-height: 200px;
+  overflow-x: hidden;
+}
