@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, HostListener } from '@angular/core';
+import { MapSizeService } from '../service/map-size.service';
 
 @Component({
   selector: 'app-header',
@@ -6,10 +7,19 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./header.component.css']
 })
 export class HeaderComponent implements OnInit {
-
-  constructor() { }
+  constructor(private mapSizeService: MapSizeService) { }
 
   ngOnInit() {
+
   }
 
+  ngAfterViewInit() {
+    this.mapSizeService.setHeight(document.getElementById("header").offsetHeight);
+  }
+
+  @HostListener('window:resize', ['$event'])
+  onResize($event) {
+    this.mapSizeService.changeHeight(document.getElementById("header").offsetHeight);
+  }
 }
+
