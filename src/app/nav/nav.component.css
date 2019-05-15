@@ -17,7 +17,14 @@ p {
 }
 
 .dropdown {
-  margin-left: 20px;
+  margin: auto;
+  width: 235px;
+}
+
+@media (max-width: 465px) {
+ .dropdown{
+    margin-top: 5px;
+  }
 }
 
 .dropdown-menu {
@@ -27,21 +34,39 @@ p {
   overflow-x: hidden;
 }
 
-@media (max-width: 558px) {
-  #navbar{
-    padding-top: 0px;
-  }
-  .dropdown{
-    margin-top:5px;
-  }
-}
-
 #datePicker{
+  width: 235px;
+  height: 39px;
   font-family:inherit;
   margin:auto;
   vertical-align: middle;
   text-align: center;
-  width: 235px;
   border-radius: 0.25em;
   background-color:#6c757d;
+}
+
+@media (max-width: 910px) {
+  #datePicker{
+    margin-top: 5px;
+  }
+}
+
+
+#checkbox{
+  width: 235px;
+  height: 39px;
+  font-family:inherit;
+  margin:auto;
+  vertical-align: center;
+  text-align: center;
+  border-radius: 0.25em;
+  background-color:#6c757d;
+  color:white;
+  padding-top:8px;
+}
+
+@media (max-width: 940px) {
+  #checkbox{
+    margin-top: 5px;
+  }
 }
