@@ -27,29 +27,6 @@ p {
   overflow-x: hidden;
 }
 
-#login {
-  display: flex;
-  margin-left: auto;
-  margin-right: 20px;
-}
-
-.input-group {
-  width: 175px;
-  margin-left: 7px;
-}
-
-.btn {
-  margin-left: 7px;
-}
-
-@media (max-width: 1084px) {
-  #login {
-    margin:auto;
-    margin-top: 5px;
-    justify-content: center;
-    flex-wrap: wrap;
-  }
-}
 @media (max-width: 558px) {
   #navbar{
     padding-top: 0px;
@@ -57,10 +34,14 @@ p {
   .dropdown{
     margin-top:5px;
   }
-  .input-group {
-    margin-top: 5px;
-  }
-  .btn{
-    margin-top: 5px;
-  }
+}
+
+#datePicker{
+  font-family:inherit;
+  margin:auto;
+  vertical-align: middle;
+  text-align: center;
+  width: 235px;
+  border-radius: 0.25em;
+  background-color:#6c757d;
 }

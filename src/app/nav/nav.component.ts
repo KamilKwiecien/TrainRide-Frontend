@@ -1,6 +1,8 @@
 import { Component, OnInit, HostListener } from '@angular/core';
 import { MapSizeService } from '../service/map-size.service';
 
+import { FormControl } from '@angular/forms';
+
 @Component({
   selector: 'app-nav',
   templateUrl: './nav.component.html',

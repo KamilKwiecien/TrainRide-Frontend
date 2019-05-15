@@ -1,0 +1,31 @@
+#login {
+  display: grid;
+  max-height: 125px;
+  background: rgb(0, 127, 200);
+}
+
+.input-group {
+  margin: auto;
+  width: 190px;
+  margin-top:3px;
+}
+
+#button{
+  margin: auto;
+  margin-top:3px;
+}
+
+.btn-secondary{
+  width: 95px;
+  float:left;
+}
+
+.btn-danger{
+  float:left;
+  margin-left: 2px;
+  width: 95px;
+}
+
+.form-control{
+  width: 100px;
+}

@@ -6,6 +6,14 @@ import { FooterComponent } from './footer/footer.component';
 import { NavComponent } from './nav/nav.component';
 import {NgxPopperModule} from 'ngx-popper';
 import { MapComponent } from './map/map.component';
+import {MatDatepickerModule} from '@angular/material/datepicker';
+import { MatFormFieldModule, DateAdapter, MatNativeDateModule } from '@angular/material';
+import { MatInputModule } from '@angular/material';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { DatepickerComponent } from './datepicker/datepicker.component';
+import { UserBarComponent } from './user-bar/user-bar.component';
+import {FormsModule, ReactiveFormsModule} from '@angular/forms';
+
 
 @NgModule({
   declarations: [
@@ -13,12 +21,21 @@ import { MapComponent } from './map/map.component';
     HeaderComponent,
     FooterComponent,
     NavComponent,
-    MapComponent
+    MapComponent,
+    DatepickerComponent,
+    UserBarComponent
   ],
   imports: [
-    BrowserModule
+    BrowserModule,
+    MatDatepickerModule,
+    MatFormFieldModule,
+    MatInputModule,
+    MatNativeDateModule,
+    BrowserAnimationsModule,
+    FormsModule,
+    ReactiveFormsModule
   ],
-  providers: [],
+  providers: [MatFormFieldModule],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
