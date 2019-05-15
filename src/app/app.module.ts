@@ -13,6 +13,8 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { DatepickerComponent } from './datepicker/datepicker.component';
 import { UserBarComponent } from './user-bar/user-bar.component';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
+import { AppRoutingModule } from './app.routing.module';
+import { HomeComponent } from './home/home.component';
 
 
 @NgModule({
@@ -23,7 +25,8 @@ import {FormsModule, ReactiveFormsModule} from '@angular/forms';
     NavComponent,
     MapComponent,
     DatepickerComponent,
-    UserBarComponent
+    UserBarComponent,
+    HomeComponent
   ],
   imports: [
     BrowserModule,
@@ -33,7 +36,8 @@ import {FormsModule, ReactiveFormsModule} from '@angular/forms';
     MatNativeDateModule,
     BrowserAnimationsModule,
     FormsModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    AppRoutingModule
   ],
   providers: [MatFormFieldModule],
   bootstrap: [AppComponent]
