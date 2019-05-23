@@ -15,6 +15,7 @@ import { UserBarComponent } from './user-bar/user-bar.component';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import { AppRoutingModule } from './app.routing.module';
 import { HomeComponent } from './home/home.component';
+import { ExampleForWiktorComponent } from './example-for-wiktor/example-for-wiktor.component';
 
 
 @NgModule({
@@ -26,7 +27,8 @@ import { HomeComponent } from './home/home.component';
     MapComponent,
     DatepickerComponent,
     UserBarComponent,
-    HomeComponent
+    HomeComponent,
+    ExampleForWiktorComponent
   ],
   imports: [
     BrowserModule,

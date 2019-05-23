@@ -1,0 +1,16 @@
+<h1>Przykład data Binding</h1>
+
+<div>
+<input [value] = "inputText">
+</div>
+
+<div>
+<input [(ngModel)]="inputText2Way">
+{{inputText2Way}}
+</div>
+
+<div>
+<input (click)="click()">
+<button [disabled]="button">Dodaj</button>
+{{showClick}}
+</div>
