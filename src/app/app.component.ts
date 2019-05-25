@@ -1,11 +1,11 @@
-import { MapSizeService } from './service/map-size.service';
+import { MapService } from './service/map.service';
 import { Component } from '@angular/core';
 
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.css'],
-  providers: [MapSizeService]
+  providers: [MapService]
 })
 export class AppComponent {
   title = 'TrainRide';

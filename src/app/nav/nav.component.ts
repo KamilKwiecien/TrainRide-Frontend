@@ -1,5 +1,5 @@
 import { Component, OnInit, HostListener } from '@angular/core';
-import { MapSizeService } from '../service/map-size.service';
+import { MapService } from '../service/map.service';
 import { HttpStationService } from '../service/http-station.service';
 
 @Component({
@@ -8,7 +8,7 @@ import { HttpStationService } from '../service/http-station.service';
   styleUrls: ['./nav.component.css']
 })
 export class NavComponent implements OnInit {
-  constructor(private mapSizeService: MapSizeService, private httpStationService: HttpStationService) { }
+  constructor(private mapService: MapService, private httpStationService: HttpStationService) { }
 
   stations;
   startPoint="Wybierz punkt początkowy";
@@ -20,10 +20,12 @@ export class NavComponent implements OnInit {
 
   setStartPoint(station){
     this.startPoint="Z: "+station.stationName;
+    this.mapService.setStart(station.x+","+station.y);
   }
 
   setEndPoint(station){
     this.endPoint="Do: "+station.stationName;
+    this.mapService.setEnd(station.x+","+station.y);
   }
 
   getAllStation(){
@@ -33,12 +35,12 @@ export class NavComponent implements OnInit {
   }
 
   ngAfterViewInit() {
-    this.mapSizeService.setHeight(document.getElementById("navbar").offsetHeight);
+    this.mapService.setHeight(document.getElementById("navbar").offsetHeight);
   }
 
   @HostListener('window:resize', ['$event'])
   onResize($event) {
-    this.mapSizeService.changeHeight(document.getElementById("navbar").offsetHeight);
+    this.mapService.changeHeight(document.getElementById("navbar").offsetHeight);
   }
 
 }

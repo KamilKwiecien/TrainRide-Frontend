@@ -1,4 +1,4 @@
-import { MapSizeService } from './../service/map-size.service';
+import { MapService } from '../service/map.service';
 import { Component, OnInit, ViewChild, ElementRef, HostListener, Input } from '@angular/core';
 
 declare var H: any;
@@ -21,12 +21,21 @@ export class MapComponent implements OnInit {
   @ViewChild('map')
   public mapElement: ElementRef;
 
-  public constructor(private mapSizeService: MapSizeService) {
-    this.start = '50.0393593,19.9754854';
-    this.finish = '50.8747647,20.6176709';
+  public constructor(private mapService: MapService) {
+    this.start = mapService.getStart;
+    this.finish = mapService.getEnd;
   }
 
   public ngOnInit() {
+    this.mapService.getS().subscribe(s=>{
+      this.start = s;
+      this.route(this.start, this.finish);
+    });
+    this.mapService.getE().subscribe(e=>{
+      this.finish = e;
+      this.route(this.start, this.finish);
+    });
+
     this.platform = new H.service.Platform({
       app_id: 'Heig9NXnzYM8aUktkoEv',
       app_code: 'SDGfAwWTLv-r3PnRKfTPxQ'
@@ -41,8 +50,8 @@ export class MapComponent implements OnInit {
       this.mapElement.nativeElement,
       defaultLayers.normal.map,
       {
-        zoom: 7,
-        center: { lat: 50.4570620, lng: 20.2965781 },
+        zoom: 6,
+        center: { lat: 52.019748, lng: 19.964191 },
         w: 10,
         h: 10
       }
@@ -90,17 +99,17 @@ export class MapComponent implements OnInit {
 
   mapSize() {
     const styles = {
-      width: this.mapSizeService.getWidth() + 'px',
-      height: this.mapSizeService.getHeight() + 'px',
+      width: this.mapService.getWidth() + 'px',
+      height: this.mapService.getHeight() + 'px',
     };
     return styles;
   }
 
   @HostListener('window:resize', ['$event'])
   onResize($event) {
-    this.mapSizeService.resize();
-    this.map.width = this.mapSizeService.getWidth();
-    this.map.height = this.mapSizeService.getHeight();
+    this.mapService.resize();
+    this.map.width = this.mapService.getWidth();
+    this.map.height = this.mapService.getHeight();
     this.map.getViewPort().resize();
   }
 

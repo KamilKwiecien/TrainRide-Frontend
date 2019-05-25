@@ -1,5 +1,5 @@
 import { Component, OnInit, HostListener } from '@angular/core';
-import { MapSizeService } from '../service/map-size.service';
+import { MapService } from '../service/map.service';
 
 @Component({
   selector: 'app-footer',
@@ -7,18 +7,18 @@ import { MapSizeService } from '../service/map-size.service';
   styleUrls: ['./footer.component.css']
 })
 export class FooterComponent implements OnInit {
-  constructor(private mapSizeService: MapSizeService) { }
+  constructor(private mapService: MapService) { }
 
   ngOnInit() {
   }
 
   ngAfterViewInit() {
-    this.mapSizeService.setHeight(document.getElementById("footer").offsetHeight);
+    this.mapService.setHeight(document.getElementById("footer").offsetHeight);
   }
 
   @HostListener('window:resize', ['$event'])
   onResize($event) {
-    this.mapSizeService.changeHeight(document.getElementById("footer").offsetHeight);
+    this.mapService.changeHeight(document.getElementById("footer").offsetHeight);
   }
 
 }
