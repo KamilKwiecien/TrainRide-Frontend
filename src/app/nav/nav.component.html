@@ -2,21 +2,19 @@
   <div class="dropdown">
     <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenu2" data-toggle="dropdown"
       aria-haspopup="true" aria-expanded="false">
-      Wybierz punkt początkowy
+      {{startPoint}}
     </button>
     <div class="dropdown-menu" aria-labelledby="dropdownMenu2">
-      <button class="dropdown-item" type="button">Action</button>
-      <button class="dropdown-item" type="button">Another action</button>
+      <button *ngFor="let station of stations" (click)="setStartPoint(station)" class="dropdown-item" type="button">{{station.stationName}}</button>
     </div>
   </div>
   <div class="dropdown">
     <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenu2" data-toggle="dropdown"
       aria-haspopup="true" aria-expanded="false">
-      Wybierz punkt docelowy
+      {{endPoint}}
     </button>
     <div class="dropdown-menu" aria-labelledby="dropdownMenu2">
-      <button class="dropdown-item" type="button">Action</button>
-      <button class="dropdown-item" type="button">Another action</button>
+      <button *ngFor="let station of stations" (click)="setEndPoint(station)" class="dropdown-item" type="button">{{station.stationName}}</button>
     </div>
   </div>
 

@@ -1,6 +1,4 @@
-import { ExampleForWiktorComponent } from './example-for-wiktor/example-for-wiktor.component';
-import { HeaderComponent } from './header/header.component';
-import { Routes, RouterModule } from '@angular/router'
+import { Routes, RouterModule } from '@angular/router';
 import { NgModule } from '@angular/core';
 import { HomeComponent } from './home/home.component';
 
@@ -13,10 +11,6 @@ const appRoutes: Routes = [
   {
     path: 'home',
     component: HomeComponent
-  },
-  {
-    path: 'example',
-    component: ExampleForWiktorComponent
   },
   {
     path: '**',

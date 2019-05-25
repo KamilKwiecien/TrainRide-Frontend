@@ -15,7 +15,7 @@ import { UserBarComponent } from './user-bar/user-bar.component';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import { AppRoutingModule } from './app.routing.module';
 import { HomeComponent } from './home/home.component';
-import { ExampleForWiktorComponent } from './example-for-wiktor/example-for-wiktor.component';
+import { HttpClientModule} from '@angular/common/http';
 
 
 @NgModule({
@@ -28,7 +28,6 @@ import { ExampleForWiktorComponent } from './example-for-wiktor/example-for-wikt
     DatepickerComponent,
     UserBarComponent,
     HomeComponent,
-    ExampleForWiktorComponent
   ],
   imports: [
     BrowserModule,
@@ -39,7 +38,8 @@ import { ExampleForWiktorComponent } from './example-for-wiktor/example-for-wikt
     BrowserAnimationsModule,
     FormsModule,
     ReactiveFormsModule,
-    AppRoutingModule
+    AppRoutingModule,
+    HttpClientModule
   ],
   providers: [MatFormFieldModule],
   bootstrap: [AppComponent]
