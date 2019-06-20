@@ -1,0 +1,21 @@
+
+
+<button class="btn btn-secondary" (click)="signIn('Facebook');">ZALOGUJ PRZEZ FB</button><br /><br />
+
+
+
+<div *ngIf="user">
+  <button class="btn btn-secondary"(click)="signOut();">Wyloguj</button><br /><br />
+  <img src="{{ user.photoUrl }}">
+  <h5>{{ user.name }}</h5>
+  <h5>{{ user.email }}</h5>
+
+
+
+</div>
+<div *ngIf=null>
+  <h2>TEST</h2>
+
+
+
+</div>

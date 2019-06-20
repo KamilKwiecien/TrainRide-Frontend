@@ -1,6 +1,8 @@
 import { Routes, RouterModule } from '@angular/router';
 import { NgModule } from '@angular/core';
 import { HomeComponent } from './home/home.component';
+import {FBLoginComponent} from './fblogin/fblogin.component';
+
 
 const appRoutes: Routes = [
   {
@@ -13,10 +15,15 @@ const appRoutes: Routes = [
     component: HomeComponent
   },
   {
+    path: 'fblogin',
+    component: FBLoginComponent
+  },
+  {
     path: '**',
     redirectTo: '/home',
     pathMatch: 'full'
-  }
+  },
+
 
 ];
 

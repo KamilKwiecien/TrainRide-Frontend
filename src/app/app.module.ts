@@ -4,10 +4,10 @@ import { AppComponent } from './app.component';
 import { HeaderComponent } from './header/header.component';
 import { FooterComponent } from './footer/footer.component';
 import { NavComponent } from './nav/nav.component';
-import {NgxPopperModule} from 'ngx-popper';
+
 import { MapComponent } from './map/map.component';
 import {MatDatepickerModule} from '@angular/material/datepicker';
-import { MatFormFieldModule, DateAdapter, MatNativeDateModule } from '@angular/material';
+import { MatFormFieldModule, MatNativeDateModule } from '@angular/material';
 import { MatInputModule } from '@angular/material';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { DatepickerComponent } from './datepicker/datepicker.component';
@@ -16,7 +16,20 @@ import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import { AppRoutingModule } from './app.routing.module';
 import { HomeComponent } from './home/home.component';
 import { HttpClientModule} from '@angular/common/http';
+import { SocialLoginModule, AuthServiceConfig } from "angularx-social-login";
+import { FacebookLoginProvider } from "angularx-social-login";
+import { FBLoginComponent } from './fblogin/fblogin.component';
 
+let config = new AuthServiceConfig([
+  {
+    id: FacebookLoginProvider.PROVIDER_ID,
+    provider: new FacebookLoginProvider("311895959765293")
+  }
+]);
+
+export function provideConfig() {
+  return config;
+}
 
 @NgModule({
   declarations: [
@@ -28,9 +41,10 @@ import { HttpClientModule} from '@angular/common/http';
     DatepickerComponent,
     UserBarComponent,
     HomeComponent,
+FBLoginComponent,
+
   ],
   imports: [
-    BrowserModule,
     MatDatepickerModule,
     MatFormFieldModule,
     MatInputModule,
@@ -39,9 +53,21 @@ import { HttpClientModule} from '@angular/common/http';
     FormsModule,
     ReactiveFormsModule,
     AppRoutingModule,
-    HttpClientModule
+    HttpClientModule,
+    BrowserModule,
+    SocialLoginModule,
   ],
-  providers: [MatFormFieldModule],
-  bootstrap: [AppComponent]
+  providers: [
+    MatFormFieldModule,
+    {
+      provide: AuthServiceConfig,
+      useFactory: provideConfig
+    },
+
+  ],
+  bootstrap: [
+    AppComponent
+  ]
 })
 export class AppModule { }
+
