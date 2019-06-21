@@ -23,7 +23,7 @@ import { FBLoginComponent } from './fblogin/fblogin.component';
 let config = new AuthServiceConfig([
   {
     id: FacebookLoginProvider.PROVIDER_ID,
-    provider: new FacebookLoginProvider("311895959765293")
+    provider: new FacebookLoginProvider("1166410650223493")
   }
 ]);
 

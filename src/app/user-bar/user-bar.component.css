@@ -1,29 +1,50 @@
+ #background {
+  position: absolute;
+  margin: 0 auto;
+  padding: 0;
+  width: 100%;
+  height: calc(100vh - 125px);
+  background-color: white;
+}
+
 #login {
-  display: grid;
-  max-height: 125px;
-  background: rgb(0, 127, 200);
+   display: inline-block;
+    position: fixed;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    width: 384px;
+    height: 100px;
+    margin: auto;
 }
 
 .input-group {
   margin: auto;
-  width: 190px;
+  width: 380px;
   margin-top:3px;
 }
 
 #button{
   margin: auto;
-  margin-top:3px;
+  margin-top:8px;
+}
+
+.btn-primary{
+  width: 380px;
+  margin-top:8px;
+  float:left;
 }
 
 .btn-secondary{
-  width: 95px;
+  width: 190px;
   float:left;
 }
 
 .btn-danger{
   float:left;
   margin-left: 2px;
-  width: 95px;
+  width: 190px;
 }
 
 .form-control{
