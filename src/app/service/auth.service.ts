@@ -8,16 +8,15 @@ import { Subject, Observable } from 'rxjs';
 export class AuthService {
 
   logged = new Subject<boolean>();
+  loggedError = new Subject<string>();
 
   constructor(private http: HttpClient) { }
 
 
   checkLogged() {
-
     if(localStorage.getItem('session_cookie')){
       let headers = new HttpHeaders().set('Cookie','JSESSIONID='+localStorage.getItem('session_cookie'));
       this.http.get('http://localhost:8080/trainRide/user/logged',{headers:headers,withCredentials: true}).subscribe(get => {
-        console.log(get);
       if(get){
           this.logged.next(true);
         }else{
@@ -27,13 +26,12 @@ export class AuthService {
     }else{
       this.logged.next(false);
     }
-
   }
 
   login(email: string, password: string, fbLogin:boolean) {
+    this.loggedError.next('');
     localStorage.removeItem('session_cookie');
-     this.http.get('http://localhost:8080/trainRide/logout',{headers:headers,withCredentials: true}).subscribe(get => {
-
+     this.http.get('http://localhost:8080/trainRide/logout',{withCredentials: true}).subscribe(get => {
         });
     let headers = new HttpHeaders().set('Content-Type', 'application/json');
     const login: Login = ({
@@ -50,6 +48,9 @@ export class AuthService {
       localStorage.removeItem('session_cookie');
       this.checkLogged();
     }
+    if(!post.body.result){
+      this.loggedError.next('Niepoprawne dane logowania');
+    }
     },
       error => {
        console.log(error.error.message);
@@ -60,6 +61,9 @@ export class AuthService {
 
   getLogged(): Observable<boolean> {
     return this.logged.asObservable();
+  }
+  getLoggedError(): Observable<string> {
+    return this.loggedError.asObservable();
   }
 }
 

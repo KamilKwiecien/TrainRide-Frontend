@@ -52,3 +52,10 @@
 .form-control{
   width: 100px;
 }
+
+#loginError{
+  padding-top:18px;
+  font-size: 19px;
+  text-align: center;
+  color:red;
+}

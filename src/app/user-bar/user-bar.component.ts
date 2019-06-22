@@ -8,7 +8,7 @@ import { AuthService } from '../service/auth.service';
   templateUrl: './user-bar.component.html',
   styleUrls: ['./user-bar.component.css']
 })
-export class UserBarComponent {
+export class UserBarComponent implements OnInit{
 
   title = 'Logowanie przez Facebook!';
   user: any;
@@ -16,7 +16,13 @@ export class UserBarComponent {
   formPassword;
   formEmail;
 
+  loggedError;
+
   constructor(private socioAuthServ: FbAuthService, private authService: AuthService) { }
+
+  ngOnInit() {
+    this.subcribeVariable();
+  }
 
   // Method to sign in with facebook.
   signIn(socialPlatform: string): void {
@@ -46,4 +52,11 @@ export class UserBarComponent {
     console.log('User signed out.');
 
   }
+
+  private subcribeVariable() {
+    this.authService.getLoggedError().subscribe(value => {
+      this.loggedError = value;
+    });
+  }
+
 }
