@@ -20,6 +20,7 @@ import { SocialLoginModule, AuthServiceConfig } from "angularx-social-login";
 import { FacebookLoginProvider } from "angularx-social-login";
 import { FBLoginComponent } from './fblogin/fblogin.component';
 import { EnteredComponent } from './entered/entered.component';
+import { UserBarComponent } from './user-bar/user-bar.component';
 
 let config = new AuthServiceConfig([
   {
@@ -44,6 +45,7 @@ export function provideConfig() {
     HomeComponent,
 FBLoginComponent,
 EnteredComponent,
+UserBarComponent,
 
   ],
   imports: [
