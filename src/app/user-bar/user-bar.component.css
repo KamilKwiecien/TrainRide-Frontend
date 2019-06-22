@@ -12,21 +12,17 @@
   text-align: center;
 }
 
-.mail{
+.tickets{
   margin-left: 10px;
-  width: calc(100% / 4);
+  width: calc(100% / 3);
 }
 
-.username{
-  width: calc(100% / 4);
-}
-
-.role{
-  width: calc(100% / 4);
+.user{
+  width: calc(100% / 3);
 }
 
 .admin{
-  width: calc(100% / 4);
+  width: calc(100% / 3);
 }
 
 .logout{
