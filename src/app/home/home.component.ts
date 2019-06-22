@@ -1,3 +1,4 @@
+import { AuthService } from './../service/auth.service';
 import { Component, OnInit } from '@angular/core';
 
 @Component({
@@ -7,9 +8,21 @@ import { Component, OnInit } from '@angular/core';
 })
 export class HomeComponent implements OnInit {
 
-  constructor() { }
+  logged;
+
+  constructor(private authService: AuthService) {
+
+  }
 
   ngOnInit() {
+    this.subcribeVariable();
+  }
+
+  private subcribeVariable() {
+    this.authService.checkLogged();
+    this.authService.getLogged().subscribe(value => {
+      this.logged = value;
+    });
   }
 
 }

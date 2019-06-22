@@ -1,14 +1,14 @@
 <div id="background">
   <div id="login">
     <div class="input-group">
-      <input type="text" class="form-control" placeholder="Użytkownik" aria-label="Username"
+      <input [(ngModel)]="formEmail" type="text" class="form-control" placeholder="Użytkownik" aria-label="Username"
         aria-describedby="basic-addon1">
     </div>
     <div class="input-group">
-      <input type="text" class="form-control" placeholder="Hasło" aria-label="Username" aria-describedby="basic-addon1">
+      <input [(ngModel)]="formPassword" type="password" class="form-control" placeholder="Hasło" aria-label="Username" aria-describedby="basic-addon1">
     </div>
     <div id="button">
-      <button type="button" class="btn btn-secondary">Zaloguj</button>
+      <button type="button" class="btn btn-secondary" (click)="login()">Zaloguj</button>
       <button type="button" class="btn btn-danger">Rejestracja</button>
     </div>
     <button class="btn btn-primary" (click)="signIn('Facebook');">Zaloguj przez Facebook'a</button><br /><br />
