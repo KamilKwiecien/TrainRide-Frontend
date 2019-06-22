@@ -1,14 +1,13 @@
-import { Login } from './../service/auth.service';
 import { Component, OnInit } from '@angular/core';
 import { AuthService as FbAuthService, FacebookLoginProvider } from 'angularx-social-login';
 import { AuthService } from '../service/auth.service';
 
 @Component({
-  selector: 'app-user-bar',
-  templateUrl: './user-bar.component.html',
-  styleUrls: ['./user-bar.component.css']
+  selector: 'app-user-login',
+  templateUrl: './user-login.component.html',
+  styleUrls: ['./user-login.component.css']
 })
-export class UserBarComponent implements OnInit{
+export class UserLoginComponent implements OnInit{
 
   title = 'Logowanie przez Facebook!';
   user: any;

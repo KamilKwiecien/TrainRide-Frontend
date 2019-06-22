@@ -1,5 +1,4 @@
 <app-header></app-header>
-<p *ngIf="logged">Zalogowany</p>
-<p *ngIf="!logged">NIE Zalogowany</p>
-<app-user-bar></app-user-bar>
+<app-user-login *ngIf="!logged"></app-user-login>
+<app-entered *ngIf="logged"></app-entered>
 <app-footer></app-footer>

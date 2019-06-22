@@ -11,7 +11,7 @@ import { MatFormFieldModule, MatNativeDateModule } from '@angular/material';
 import { MatInputModule } from '@angular/material';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { DatepickerComponent } from './datepicker/datepicker.component';
-import { UserBarComponent } from './user-bar/user-bar.component';
+import { UserLoginComponent } from './user-login/user-login.component';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import { AppRoutingModule } from './app.routing.module';
 import { HomeComponent } from './home/home.component';
@@ -19,6 +19,7 @@ import { HttpClientModule} from '@angular/common/http';
 import { SocialLoginModule, AuthServiceConfig } from "angularx-social-login";
 import { FacebookLoginProvider } from "angularx-social-login";
 import { FBLoginComponent } from './fblogin/fblogin.component';
+import { EnteredComponent } from './entered/entered.component';
 
 let config = new AuthServiceConfig([
   {
@@ -39,9 +40,10 @@ export function provideConfig() {
     NavComponent,
     MapComponent,
     DatepickerComponent,
-    UserBarComponent,
+    UserLoginComponent,
     HomeComponent,
 FBLoginComponent,
+EnteredComponent,
 
   ],
   imports: [
