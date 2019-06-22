@@ -2,6 +2,7 @@ import { Routes, RouterModule } from '@angular/router';
 import { NgModule } from '@angular/core';
 import { HomeComponent } from './home/home.component';
 import {FBLoginComponent} from './fblogin/fblogin.component';
+import { UserInfoComponent } from './user-info/user-info.component';
 
 
 const appRoutes: Routes = [
@@ -15,8 +16,8 @@ const appRoutes: Routes = [
     component: HomeComponent
   },
   {
-    path: 'fblogin',
-    component: FBLoginComponent
+    path: 'user',
+    component: UserInfoComponent
   },
   {
     path: '**',

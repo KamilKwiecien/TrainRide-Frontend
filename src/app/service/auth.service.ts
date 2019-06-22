@@ -11,15 +11,20 @@ export class AuthService {
   logged = new Subject<boolean>();
   loggedError = new Subject<string>();
 
+  userInfo = new Subject<UserInfo>();
+
+
+
   constructor(private http: HttpClient, private router: Router) { }
 
 
   checkLogged() {
     if (localStorage.getItem('session_cookie')) {
       let headers = new HttpHeaders().set('Cookie', 'JSESSIONID=' + localStorage.getItem('session_cookie'));
-      this.http.get('http://localhost:8080/trainRide/user/logged', { headers: headers, withCredentials: true }).subscribe(get => {
+      this.http.get<UserInfo>('http://localhost:8080/trainRide/user/logged', { headers: headers, withCredentials: true }).subscribe(get => {
         if (get) {
           this.logged.next(true);
+          this.userInfo.next(get);
         } else {
           this.logged.next(false);
         }
@@ -71,8 +76,13 @@ export class AuthService {
   getLogged(): Observable<boolean> {
     return this.logged.asObservable();
   }
+
   getLoggedError(): Observable<string> {
     return this.loggedError.asObservable();
+  }
+
+  getUserInfo(): Observable<UserInfo> {
+    return this.userInfo.asObservable();
   }
 }
 
@@ -88,4 +98,13 @@ export interface LoginResponse {
   cookie?: string;
   msg?: string;
   result?: string;
+}
+
+export interface UserInfo{
+  email?: string;
+  roles?: Array<UserRole>;
+}
+
+export interface UserRole{
+  name:string;
 }

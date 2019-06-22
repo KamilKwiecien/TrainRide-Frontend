@@ -1,0 +1,12 @@
+<app-header></app-header>
+<div *ngIf="!logged">
+  <h1>Musisz być zalogowany, aby przelądać informacje o użytkowniku</h1>
+</div>
+<app-entered *ngIf="logged"></app-entered>
+<div id="userInfo" *ngIf="logged">
+  {{userInfo.email}}
+  <div *ngFor="let role of userInfo.roles">
+    {{role.name}}
+  </div>
+  </div>
+<app-footer></app-footer>

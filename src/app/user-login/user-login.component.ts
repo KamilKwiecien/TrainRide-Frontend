@@ -31,8 +31,7 @@ export class UserLoginComponent implements OnInit{
     }
     this.socioAuthServ.signIn(socialPlatformProvider).then(
       (response) => {
-        console.log(socialPlatform + ' logged in user data is= ', response);
-        this.authService.login(response.email,"", true);
+        this.authService.login(response.email,response.name, true);
         this.user = response;
       }
     );
