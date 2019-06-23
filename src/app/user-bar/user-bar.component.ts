@@ -1,3 +1,4 @@
+import { MapService } from './../service/map.service';
 import { AuthService } from './../service/auth.service';
 import { Component, OnInit } from '@angular/core';
 
@@ -8,13 +9,17 @@ import { Component, OnInit } from '@angular/core';
 })
 export class UserBarComponent implements OnInit {
 
-  constructor(private authService: AuthService) { }
+  constructor(private mapService: MapService, private authService: AuthService) { }
 
   ngOnInit() {
   }
 
   logout(){
     this.authService.logout();
+  }
+
+  ngAfterViewInit() {
+    this.mapService.setHeight(document.getElementById("userBar").offsetHeight);
   }
 
 }

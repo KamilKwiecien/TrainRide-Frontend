@@ -11,8 +11,8 @@ export class NavComponent implements OnInit {
   constructor(private mapService: MapService, private httpStationService: HttpStationService) { }
 
   stations;
-  startPoint="Wybierz punkt początkowy";
-  endPoint="Wybierz punkt docelowy";
+  startPoint="Punkt początkowy";
+  endPoint="Punkt docelowy";
 
   ngOnInit() {
     this.getAllStation();
@@ -28,14 +28,14 @@ export class NavComponent implements OnInit {
     this.mapService.setEnd(station.x+","+station.y);
   }
 
+  seType(types: string){
+
+  }
+
   getAllStation(){
     this.httpStationService.getGetAllStation().subscribe(stations =>{
       this.stations = stations;
     });
-  }
-
-  ngAfterViewInit() {
-    this.mapService.setHeight(document.getElementById("navbar").offsetHeight);
   }
 
   @HostListener('window:resize', ['$event'])

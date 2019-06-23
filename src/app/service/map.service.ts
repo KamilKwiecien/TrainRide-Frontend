@@ -16,7 +16,7 @@ export class MapService {
   private e = new Subject<string>();
 
   constructor() {
-    this.width = window.innerWidth;
+    this.width = window.innerWidth-275;
     this.height = window.innerHeight;
     this.newHeight = 0;
   }
@@ -36,7 +36,7 @@ export class MapService {
   }
 
   getWidth(): number {
-    this.width = window.innerWidth;
+    this.width = window.innerWidth-275;
     return this.width;
   }
 

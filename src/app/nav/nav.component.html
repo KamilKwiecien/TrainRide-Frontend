@@ -17,10 +17,17 @@
       <button *ngFor="let station of stations" (click)="setEndPoint(station)" class="dropdown-item" type="button">{{station.stationName}}</button>
     </div>
   </div>
-
-  <div id="datePicker">
-      <app-datepicker></app-datepicker>
+  <div class="dropdown">
+    <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenu2" data-toggle="dropdown"
+      aria-haspopup="true" aria-expanded="false">
+      Typ trasy
+    </button>
+    <div class="dropdown-menu" aria-labelledby="dropdownMenu2">
+      <button (click)="setType('shortest')" class="dropdown-item" type="button">shortest</button>
+      <button (click)="setType('fastest')" class="dropdown-item" type="button">fastest</button>
+      <button (click)="setType('quickest')" class="dropdown-item" type="button">quickest</button>
     </div>
+  </div>
 
   <div id="checkbox">
     <div class="custom-control custom-checkbox">

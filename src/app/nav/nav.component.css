@@ -1,13 +1,16 @@
 #navbar {
   margin: 0 auto;
   background-color: #3d3d3d;
-  display: flex;
+  width:240px;
+  height: calc(100vh - 125px - 40px - 16px);
+  display: inline-block;
   align-items: center;
   align-content: space-between;
   justify-content: center;
   flex-wrap: wrap;
   padding-top: 5px;
   padding-bottom: 5px;
+  overflow: hidden;
 }
 
 p {
@@ -19,38 +22,20 @@ p {
 .dropdown {
   margin: auto;
   width: 235px;
-}
-
-@media (max-width: 465px) {
- .dropdown{
-    margin-top: 5px;
-  }
+  margin-bottom:10px;
 }
 
 .dropdown-menu {
   height: auto;
-  width: 200px;
+  width: 235px;
   max-height: 200px;
   overflow-x: hidden;
+  margin-bottom:10px;
 }
 
-#datePicker{
-  width: 235px;
-  height: 39px;
-  font-family:inherit;
-  margin:auto;
-  vertical-align: middle;
-  text-align: center;
-  border-radius: 0.25em;
-  background-color:#6c757d;
+#dropdownMenu2{
+width: 235px;
 }
-
-@media (max-width: 910px) {
-  #datePicker{
-    margin-top: 5px;
-  }
-}
-
 
 #checkbox{
   width: 235px;
@@ -62,11 +47,6 @@ p {
   border-radius: 0.25em;
   background-color:#6c757d;
   color:white;
-  padding-top:8px;
-}
-
-@media (max-width: 940px) {
-  #checkbox{
-    margin-top: 5px;
-  }
+  margin-bottom: 10px;
+  padding-top: 8px;
 }
