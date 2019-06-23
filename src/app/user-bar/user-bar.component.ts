@@ -19,7 +19,7 @@ export class UserBarComponent implements OnInit {
   }
 
   ngAfterViewInit() {
-    this.mapService.setHeight(document.getElementById("userBar").offsetHeight);
+    //this.mapService.setHeight(document.getElementById("userBar").offsetHeight);
   }
 
 }

@@ -51,7 +51,7 @@ export class MapComponent implements OnInit {
       defaultLayers.normal.map,
       {
         zoom: 6,
-        center: { lat: 51.649748, lng: 19.964191 },
+        center: { lat: 51.949748, lng: 19.964191 },
         w: 10,
         h: 10
       }
