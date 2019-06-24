@@ -1,6 +1,8 @@
-import { Component, OnInit, HostListener } from '@angular/core';
-import { MapService } from '../service/map.service';
+import { MapService } from './../service/map.service';
+import { Component, HostListener, OnInit } from '@angular/core';
+
 import { HttpStationService } from '../service/http-station.service';
+import { RouteService } from '../service/route.service';
 
 @Component({
   selector: 'app-nav',
@@ -8,35 +10,70 @@ import { HttpStationService } from '../service/http-station.service';
   styleUrls: ['./nav.component.css']
 })
 export class NavComponent implements OnInit {
-  constructor(private mapService: MapService, private httpStationService: HttpStationService) { }
+  constructor(private routeService: RouteService, private mapService: MapService, private httpStationService: HttpStationService) { }
 
   stations;
-  startPoint="Punkt początkowy";
-  endPoint="Punkt docelowy";
+  startPoint = "Punkt początkowy";
+  endPoint = "Punkt docelowy";
+  routeType = "Typ trasy";
+
+  foundRoute = true;
+  errorRoute = false;
+  errorRouteMessage = 'Trasa nie znaleziona';
+
+  changesCount;
+  cost;
+  distance;
+  time;
 
   ngOnInit() {
     this.getAllStation();
+    this.routeService.setWithChange(true);
+    this.subcribeVariable();
   }
 
-  setStartPoint(station){
-    this.startPoint="Z: "+station.stationName;
-    this.mapService.setStart(station.x+","+station.y);
-    this.mapService.setIntermediate(station.x+","+station.y);
+  setStartPoint(station) {
+    this.startPoint = "Z: " + station.stationName;
+    this.routeService.setStart(station.stationName);
   }
 
 
-  setEndPoint(station){
-    this.endPoint="Do: "+station.stationName;
-    this.mapService.setEnd(station.x+","+station.y);
+  setEndPoint(station) {
+    this.endPoint = "Do: " + station.stationName;
+    this.routeService.setEnd(station.stationName);
   }
 
-  setType(types: string){
-
+  setType(type: string) {
+    this.routeType = "Typ trasy: " + type;
+    this.routeService.setType(type);
   }
 
-  getAllStation(){
-    this.httpStationService.getGetAllStation().subscribe(stations =>{
+  setWithChange(event) {
+    this.routeService.setWithChange(event.path[0].checked);
+  }
+
+  getAllStation() {
+    this.httpStationService.getGetAllStation().subscribe(stations => {
       this.stations = stations;
+    });
+  }
+
+
+  private subcribeVariable() {
+    this.routeService.changesCount.subscribe(value => {
+      this.changesCount = value;
+    });
+
+    this.routeService.getCost().subscribe(value => {
+      this.cost = value;
+    });
+
+    this.routeService.getDistance().subscribe(value => {
+      this.distance = value;
+    });
+
+    this.routeService.getTime().subscribe(value => {
+      this.time = value;
     });
   }
 
@@ -47,7 +84,7 @@ export class NavComponent implements OnInit {
 
 }
 
-export interface Station{
+export interface Station {
   id?: number;
   stationName?: string;
   x?: string;

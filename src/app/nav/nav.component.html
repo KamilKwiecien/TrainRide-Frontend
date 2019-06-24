@@ -5,7 +5,8 @@
       {{startPoint}}
     </button>
     <div class="dropdown-menu" aria-labelledby="dropdownMenu2">
-      <button *ngFor="let station of stations" (click)="setStartPoint(station)" class="dropdown-item" type="button">{{station.stationName}}</button>
+      <button *ngFor="let station of stations" (click)="setStartPoint(station)" class="dropdown-item"
+        type="button">{{station.stationName}}</button>
     </div>
   </div>
   <div class="dropdown">
@@ -14,13 +15,14 @@
       {{endPoint}}
     </button>
     <div class="dropdown-menu" aria-labelledby="dropdownMenu2">
-      <button *ngFor="let station of stations" (click)="setEndPoint(station)" class="dropdown-item" type="button">{{station.stationName}}</button>
+      <button *ngFor="let station of stations" (click)="setEndPoint(station)" class="dropdown-item"
+        type="button">{{station.stationName}}</button>
     </div>
   </div>
   <div class="dropdown">
     <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenu2" data-toggle="dropdown"
       aria-haspopup="true" aria-expanded="false">
-      Typ trasy
+      {{routeType}}
     </button>
     <div class="dropdown-menu" aria-labelledby="dropdownMenu2">
       <button (click)="setType('shortest')" class="dropdown-item" type="button">Najkrótsza</button>
@@ -31,9 +33,20 @@
 
   <div id="checkbox">
     <div class="custom-control custom-checkbox">
-      <input type="checkbox" class="custom-control-input" id="defaultUnchecked">
+      <input type="checkbox" (change)="setWithChange($event)" class="custom-control-input" id="defaultUnchecked"
+        checked>
       <label class="custom-control-label" for="defaultUnchecked">Preferuj bez przesiadek</label>
     </div>
   </div>
 
+  <div *ngIf="errorRoute" id="routeError">
+      <p>{{errorRouteMessage}}</p>
+    </div>
+
+  <div *ngIf="foundRoute" id="routeInfo">
+    <p>Przesiadki: {{changesCount}}</p>
+    <p>Koszt: {{cost}}</p>
+    <p>Dystans: {{distance}}</p>
+    <p>Czas: {{time}}</p>
+  </div>
 </div>

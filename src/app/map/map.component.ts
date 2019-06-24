@@ -32,6 +32,7 @@ export class MapComponent implements OnInit {
     this.mapService.getS().subscribe(s => {
       this.start = s;
       this.route(this.start, this.finish);
+      console.log("zmiana");
     });
     this.mapService.getI().subscribe(i => {
       this.intermediate = i;
