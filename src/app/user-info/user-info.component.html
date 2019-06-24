@@ -2,7 +2,7 @@
 <div *ngIf="!logged">
   <h1>Musisz być zalogowany, aby przelądać informacje o użytkowniku</h1>
 </div>
-<app-entered *ngIf="logged"></app-entered>
+<app-user-bar *ngIf="logged"></app-user-bar>
 <div id="userInfo" *ngIf="logged">
   {{userInfo.email}}
   <div *ngFor="let role of userInfo.roles">

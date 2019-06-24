@@ -21,14 +21,16 @@ export class NavComponent implements OnInit {
   setStartPoint(station){
     this.startPoint="Z: "+station.stationName;
     this.mapService.setStart(station.x+","+station.y);
+    this.mapService.setIntermediate(station.x+","+station.y);
   }
+
 
   setEndPoint(station){
     this.endPoint="Do: "+station.stationName;
     this.mapService.setEnd(station.x+","+station.y);
   }
 
-  seType(types: string){
+  setType(types: string){
 
   }
 

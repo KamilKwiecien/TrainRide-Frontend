@@ -15,6 +15,7 @@ export class MapComponent implements OnInit {
   private router: any;
 
   private start: any;
+  private intermediate: any;
   private finish: any;
   private directions;
 
@@ -23,15 +24,20 @@ export class MapComponent implements OnInit {
 
   public constructor(private mapService: MapService) {
     this.start = mapService.getStart;
+    this.intermediate = mapService.getIntermediate;
     this.finish = mapService.getEnd;
   }
 
   public ngOnInit() {
-    this.mapService.getS().subscribe(s=>{
+    this.mapService.getS().subscribe(s => {
       this.start = s;
       this.route(this.start, this.finish);
     });
-    this.mapService.getE().subscribe(e=>{
+    this.mapService.getI().subscribe(i => {
+      this.intermediate = i;
+      this.route(this.start, this.finish);
+    });
+    this.mapService.getE().subscribe(e => {
       this.finish = e;
       this.route(this.start, this.finish);
     });
@@ -65,7 +71,8 @@ export class MapComponent implements OnInit {
     const params = {
       mode: 'fastest;car',
       waypoint0: 'geo!' + this.start,
-      waypoint1: 'geo!' + this.finish,
+      waypoint1: 'geo!' + this.intermediate,
+      waypoint2: 'geo!' + this.finish,
       representation: 'display'
     }
     this.map.removeObjects(this.map.getObjects());
@@ -85,11 +92,15 @@ export class MapComponent implements OnInit {
           lat: this.start.split(',')[0],
           lng: this.start.split(',')[1]
         });
+        const intermediateMarker = new H.map.Marker({
+          lat: this.intermediate.split(',')[0],
+          lng: this.intermediate.split(',')[1]
+        });
         const finishMarker = new H.map.Marker({
           lat: this.finish.split(',')[0],
           lng: this.finish.split(',')[1]
         });
-        this.map.addObjects([routeLine, startMarker, finishMarker]);
+        this.map.addObjects([routeLine, startMarker, intermediateMarker, finishMarker]);
         //this.map.setViewBounds(routeLine.getBounds());
       }
     }, error => {

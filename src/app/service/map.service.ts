@@ -1,4 +1,3 @@
-import { MapComponent } from './../map/map.component';
 import { Injectable } from '@angular/core';
 import { Subject, Observable } from 'rxjs';
 
@@ -12,6 +11,8 @@ export class MapService {
   private newHeight;
   private start;
   private s = new Subject<string>();
+  private intermediate;
+  private i = new Subject<string>();
   private end;
   private e = new Subject<string>();
 
@@ -54,6 +55,15 @@ export class MapService {
     return this.start;
   }
 
+  setIntermediate(value:string):void{
+    this.intermediate = value;
+    this.i.next(this.intermediate);
+  }
+
+  getIntermediate():string{
+    return this.intermediate;
+  }
+
   setEnd(value:string):void{
     this.end = value;
     this.e.next(this.end);
@@ -65,6 +75,10 @@ export class MapService {
 
   getS(): Observable<string>{
     return this.s.asObservable();
+  }
+
+  getI(): Observable<string>{
+    return this.i.asObservable();
   }
 
   getE(): Observable<string>{
