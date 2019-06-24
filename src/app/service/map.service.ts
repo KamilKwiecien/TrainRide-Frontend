@@ -44,44 +44,4 @@ export class MapService {
   getHeight(): number {
     return this.height;
   }
-
-  setStart(value:string):void{
-    this.start = value;
-    this.s.next(this.start);
-
-  }
-
-  getStart():string{
-    return this.start;
-  }
-
-  setIntermediate(value:string):void{
-    this.intermediate = value;
-    this.i.next(this.intermediate);
-  }
-
-  getIntermediate():string{
-    return this.intermediate;
-  }
-
-  setEnd(value:string):void{
-    this.end = value;
-    this.e.next(this.end);
-  }
-
-  getEnd():string{
-    return this.end;
-  }
-
-  getS(): Observable<string>{
-    return this.s.asObservable();
-  }
-
-  getI(): Observable<string>{
-    return this.i.asObservable();
-  }
-
-  getE(): Observable<string>{
-    return this.e.asObservable();
-  }
 }

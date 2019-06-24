@@ -20,6 +20,10 @@ export class RouteService {
   distance = new Subject<number>();
   time = new Subject<number>();
 
+  s = new Subject<string>();
+  i = new Subject<string>();
+  e = new Subject<string>();
+
   constructor(private mapService: MapService, private http: HttpClient) {
 
   }
@@ -40,14 +44,14 @@ export class RouteService {
       this.time.next(post.time);
 
       if(post.changesCount==0){
-        this.mapService.setStart(post.stations[0].x+','+post.stations[0].y);
-        this.mapService.setIntermediate(post.stations[1].x+','+post.stations[1].y);
-        this.mapService.setEnd(post.stations[1].x+','+post.stations[1].y);
+        this.s.next(post.stations[0].x+","+post.stations[0].y);
+        this.i.next(post.stations[1].x+","+post.stations[1].y);
+        this.e.next(post.stations[1].x+","+post.stations[1].y);
       }
       if(post.changesCount==1){
-        this.mapService.setStart(post.stations[0].x+','+post.stations[0].y);
-        this.mapService.setIntermediate(post.stations[1].x+','+post.stations[1].y);
-        this.mapService.setEnd(post.stations[2].x+','+post.stations[2].y);
+        this.s.next(post.stations[0].x+','+post.stations[0].y);
+        this.i.next(post.stations[1].x+','+post.stations[1].y);
+        this.e.next(post.stations[2].x+','+post.stations[2].y);
       }
     });
   }
@@ -88,6 +92,17 @@ export class RouteService {
     return this.time.asObservable();
   }
 
+  getS(): Observable<string> {
+    return this.s.asObservable();
+  }
+
+  getI(): Observable<string> {
+    return this.i.asObservable();
+  }
+
+  getE(): Observable<string> {
+    return this.e.asObservable();
+  }
 }
 
 export interface Path {

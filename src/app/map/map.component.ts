@@ -1,5 +1,6 @@
-import { MapService } from '../service/map.service';
+import { RouteService } from './../service/route.service';
 import { Component, OnInit, ViewChild, ElementRef, HostListener, Input } from '@angular/core';
+import { MapService } from '../service/map.service';
 
 declare var H: any;
 
@@ -19,26 +20,31 @@ export class MapComponent implements OnInit {
   private finish: any;
   private directions;
 
+
   @ViewChild('map')
   public mapElement: ElementRef;
 
-  public constructor(private mapService: MapService) {
-    this.start = mapService.getStart;
-    this.intermediate = mapService.getIntermediate;
-    this.finish = mapService.getEnd;
+  public constructor(private mapService: MapService, private routeService: RouteService) {
+
   }
 
-  public ngOnInit() {
-    this.mapService.getS().subscribe(s => {
+  method(){
+    this.route(this.start, this.finish);
+    console.log(this.start);
+    console.log(this.intermediate);
+    console.log(this.finish);
+  }
+
+  ngOnInit() {
+    this.routeService.getS().subscribe(s => {
       this.start = s;
       this.route(this.start, this.finish);
-      console.log("zmiana");
     });
-    this.mapService.getI().subscribe(i => {
+    this.routeService.getI().subscribe(i => {
       this.intermediate = i;
       this.route(this.start, this.finish);
     });
-    this.mapService.getE().subscribe(e => {
+    this.routeService.getE().subscribe(e => {
       this.finish = e;
       this.route(this.start, this.finish);
     });
