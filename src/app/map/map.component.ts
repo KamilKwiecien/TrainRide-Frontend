@@ -17,6 +17,7 @@ export class MapComponent implements OnInit {
 
   private start: any;
   private intermediate: any;
+  private intermediate2: any;
   private finish: any;
   private directions;
 
@@ -28,13 +29,6 @@ export class MapComponent implements OnInit {
 
   }
 
-  method(){
-    this.route(this.start, this.finish);
-    console.log(this.start);
-    console.log(this.intermediate);
-    console.log(this.finish);
-  }
-
   ngOnInit() {
     this.routeService.getS().subscribe(s => {
       this.start = s;
@@ -42,6 +36,10 @@ export class MapComponent implements OnInit {
     });
     this.routeService.getI().subscribe(i => {
       this.intermediate = i;
+      this.route(this.start, this.finish);
+    });
+    this.routeService.getI2().subscribe(i => {
+      this.intermediate2 = i;
       this.route(this.start, this.finish);
     });
     this.routeService.getE().subscribe(e => {
@@ -75,11 +73,15 @@ export class MapComponent implements OnInit {
 
 
   public route(start: any, finish: any) {
+    console.log(this.start);
+    console.log(this.intermediate);
+    console.log(this.finish);
     const params = {
       mode: 'fastest;car',
       waypoint0: 'geo!' + this.start,
       waypoint1: 'geo!' + this.intermediate,
-      waypoint2: 'geo!' + this.finish,
+      waypoint2: 'geo!' + this.intermediate2,
+      waypoint3: 'geo!' + this.finish,
       representation: 'display'
     }
     this.map.removeObjects(this.map.getObjects());
@@ -103,11 +105,15 @@ export class MapComponent implements OnInit {
           lat: this.intermediate.split(',')[0],
           lng: this.intermediate.split(',')[1]
         });
+        const intermediateMarker2 = new H.map.Marker({
+          lat: this.intermediate2.split(',')[0],
+          lng: this.intermediate2.split(',')[1]
+        });
         const finishMarker = new H.map.Marker({
           lat: this.finish.split(',')[0],
           lng: this.finish.split(',')[1]
         });
-        this.map.addObjects([routeLine, startMarker, intermediateMarker, finishMarker]);
+        this.map.addObjects([routeLine, startMarker, intermediateMarker, intermediateMarker2, finishMarker]);
         //this.map.setViewBounds(routeLine.getBounds());
       }
     }, error => {

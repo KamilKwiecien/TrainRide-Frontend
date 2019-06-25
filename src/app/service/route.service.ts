@@ -22,6 +22,7 @@ export class RouteService {
 
   s = new Subject<string>();
   i = new Subject<string>();
+  i2 = new Subject<string>();
   e = new Subject<string>();
 
   constructor(private mapService: MapService, private http: HttpClient) {
@@ -43,15 +44,27 @@ export class RouteService {
       this.distance.next(post.distance);
       this.time.next(post.time);
 
+      this.s.next('');
+      this.i.next('');
+      this.e.next('');
+
       if(post.changesCount==0){
         this.s.next(post.stations[0].x+","+post.stations[0].y);
         this.i.next(post.stations[1].x+","+post.stations[1].y);
+        this.i2.next(post.stations[1].x+","+post.stations[1].y);
         this.e.next(post.stations[1].x+","+post.stations[1].y);
       }
       if(post.changesCount==1){
         this.s.next(post.stations[0].x+','+post.stations[0].y);
         this.i.next(post.stations[1].x+','+post.stations[1].y);
+        this.i2.next(post.stations[2].x+','+post.stations[2].y);
         this.e.next(post.stations[2].x+','+post.stations[2].y);
+      }
+      if(post.changesCount==2){
+        this.s.next(post.stations[0].x+','+post.stations[0].y);
+        this.i.next(post.stations[1].x+','+post.stations[1].y);
+        this.i2.next(post.stations[2].x+','+post.stations[2].y);
+        this.e.next(post.stations[3].x+','+post.stations[3].y);
       }
     });
   }
@@ -98,6 +111,10 @@ export class RouteService {
 
   getI(): Observable<string> {
     return this.i.asObservable();
+  }
+
+  getI2(): Observable<string> {
+    return this.i2.asObservable();
   }
 
   getE(): Observable<string> {
