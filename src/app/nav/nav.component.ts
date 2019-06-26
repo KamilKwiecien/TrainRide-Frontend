@@ -25,6 +25,7 @@ export class NavComponent implements OnInit {
   cost;
   distance;
   time;
+  info = 'Kielce-Warszawa-Bydgoszcz-Szczecin';
 
   ngOnInit() {
     this.getAllStation();

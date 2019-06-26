@@ -22,6 +22,8 @@ import { FBLoginComponent } from './fblogin/fblogin.component';
 import { EnteredComponent } from './entered/entered.component';
 import { UserBarComponent } from './user-bar/user-bar.component';
 import { UserInfoComponent } from './user-info/user-info.component';
+import { PayPalCancelComponent } from './pay-pal-cancel/pay-pal-cancel.component';
+import { PayPalReturnComponent } from './pay-pal-return/pay-pal-return.component';
 
 let config = new AuthServiceConfig([
   {
@@ -48,6 +50,8 @@ FBLoginComponent,
 EnteredComponent,
 UserBarComponent,
 UserInfoComponent,
+PayPalCancelComponent,
+PayPalReturnComponent,
 
   ],
   imports: [

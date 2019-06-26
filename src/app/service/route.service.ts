@@ -46,6 +46,7 @@ export class RouteService {
 
       this.s.next('');
       this.i.next('');
+      this.i2.next('');
       this.e.next('');
 
       if(post.changesCount==0){

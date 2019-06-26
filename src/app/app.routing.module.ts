@@ -1,3 +1,5 @@
+import { PayPalReturnComponent } from './pay-pal-return/pay-pal-return.component';
+import { PayPalCancelComponent } from './pay-pal-cancel/pay-pal-cancel.component';
 import { Routes, RouterModule } from '@angular/router';
 import { NgModule } from '@angular/core';
 import { HomeComponent } from './home/home.component';
@@ -18,6 +20,14 @@ const appRoutes: Routes = [
   {
     path: 'user',
     component: UserInfoComponent
+  },
+  {
+    path: 'payPalCancel',
+    component: PayPalCancelComponent
+  },
+  {
+    path: 'payPalReturn',
+    component: PayPalReturnComponent
   },
   {
     path: '**',
