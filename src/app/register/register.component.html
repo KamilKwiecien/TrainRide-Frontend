@@ -1,0 +1,45 @@
+<app-header></app-header>
+<span id="info">Formularz rejestracji</span>
+<div id="formularz">
+
+<form #f="ngForm" (ngSubmit)="register()" novalidate>
+
+  <div >
+    <label  for="username">Podaj nazwę użytkownika</label>
+    <div >
+      <input id="username" name="username"  ngModel required #username="ngModel"><br>
+
+    </div>
+  </div>
+  <br>
+  <div >
+    <label for="email">Podaj adres mailowy</label>
+    <div >
+      <input  id="email" name="email" ngModel required #email="ngModel"><br>
+
+    </div>
+  </div>
+  <br>
+  <div >
+    <label for="password">Podaj hasło</label>
+    <div >
+      <input type="password" id="password" name="password" ngModel required #password="ngModel"><br>
+
+    </div>
+  </div>
+  <br>
+  <div >
+    <label for="password2">Powtórz hasło</label>
+    <div >
+      <input type="password" id="password2" name="password2" ngModel required #password2="ngModel"><br>
+
+    </div>
+  </div>
+
+<br>
+  <button onClick=register() class="button1">Rejestruj</button>
+</form>
+</div>
+
+
+<app-footer></app-footer>

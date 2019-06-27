@@ -5,6 +5,7 @@ import { NgModule } from '@angular/core';
 import { HomeComponent } from './home/home.component';
 import {FBLoginComponent} from './fblogin/fblogin.component';
 import { UserInfoComponent } from './user-info/user-info.component';
+import {RegisterComponent} from './register/register.component';
 
 
 const appRoutes: Routes = [
@@ -28,6 +29,10 @@ const appRoutes: Routes = [
   {
     path: 'payPalReturn',
     component: PayPalReturnComponent
+  },
+  {
+    path: 'register',
+    component: RegisterComponent
   },
   {
     path: '**',

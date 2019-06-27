@@ -24,11 +24,11 @@ import { UserBarComponent } from './user-bar/user-bar.component';
 import { UserInfoComponent } from './user-info/user-info.component';
 import { PayPalCancelComponent } from './pay-pal-cancel/pay-pal-cancel.component';
 import { PayPalReturnComponent } from './pay-pal-return/pay-pal-return.component';
-
+import { RegisterComponent } from './register/register.component';
 let config = new AuthServiceConfig([
   {
     id: FacebookLoginProvider.PROVIDER_ID,
-    provider: new FacebookLoginProvider("1166410650223493")
+    provider: new FacebookLoginProvider("311895959765293")
   }
 ]);
 
@@ -52,6 +52,7 @@ UserBarComponent,
 UserInfoComponent,
 PayPalCancelComponent,
 PayPalReturnComponent,
+    RegisterComponent,
 
   ],
   imports: [
