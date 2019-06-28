@@ -25,6 +25,7 @@ export class UserInfoComponent implements OnInit {
 
     this.authService.getUserInfo().subscribe(value =>{
       this.userInfo = value;
+
     });
   }
 

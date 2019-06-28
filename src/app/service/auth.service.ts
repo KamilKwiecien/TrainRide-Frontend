@@ -102,7 +102,7 @@ export interface LoginResponse {
 
 export interface UserInfo{
   email?: string;
-  username?: string;
+  user_name?: string;
   roles?: Array<UserRole>;
 }
 
