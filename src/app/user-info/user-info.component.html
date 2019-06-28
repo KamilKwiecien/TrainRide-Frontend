@@ -1,11 +1,48 @@
 <app-header></app-header>
 <div *ngIf="!logged">
-  <h1>Musisz być zalogowany, aby przelądać informacje o użytkowniku</h1>
+  <h1 class="info">Musisz być zalogowany, aby przelądać informacje o użytkowniku</h1>
 </div>
 <app-user-bar *ngIf="logged"></app-user-bar>
-<div id="userInfo" *ngIf="logged">
-  {{userInfo.email}}
-  <div *ngFor="let role of userInfo.roles">
+
+<a *ngIf="logged == false" class="info" href = "http://localhost:4200/home">Zaloguj</a>
+<div class="dane" id="userInfo" *ngIf="logged">
+
+  <span *ngIf="logged" class="info">Informacje o użytkowniku</span>
+  <br>
+  <div class="divTable">
+    <div class="divTableBody">
+      <div class="divTableRow">
+        <div class="divTableCell">   Adres mailowy użytkownika</div>
+        <div class="divTableCell">   {{userInfo.email}}</div>
+      </div>
+      <div class="divTableRow">
+        <div class="divTableCell">   Nazwa użytkownika</div>
+        <div class="divTableCell">   {{userInfo.username}}</div>
+      </div>
+      <div class="divTableRow">
+      <div class="divTableCell">Role użytkownika</div>
+      <div class="divTableCell"> <span *ngFor="let role of userInfo.roles">{{role.name+","}}</span></div>
+    </div>
+      <div class="divTableRow">
+        <div class="divTableCell">Premium</div>
+        <div *ngFor="let role of userInfo.roles">
+        <div class="divTableCell" *ngIf="(role.name == 'premium')">TAK</div>
+          <div class="divTableCell" *ngIf="(role.name != 'premium')"><button class="button1">KUP</button></div>
+       </div>
+      </div>
+    </div>
+  </div>
+
+
+  <div >
+
+    <div >
+      <br>
+
+    </div>
+  </div>
+
+  <div >
     {{role.name}}
   </div>
   </div>

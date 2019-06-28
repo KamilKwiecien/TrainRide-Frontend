@@ -1,7 +1,26 @@
 #header{
   display: flex;
 }
+a:hover{
+  text-decoration: none;
+}
 
+.nazwa{
+
+  -webkit-box-sizing: content-box;
+  -moz-box-sizing: content-box;
+  box-sizing: content-box;
+  border: none;
+  font: normal 76px/1 "Aclonica", Helvetica, sans-serif;
+  color: #0096ff;
+  text-align: center;
+  -o-text-overflow: ellipsis;
+  text-overflow: ellipsis;
+  text-shadow: 3px 3px 4px rgba(0,0,0,0.5) ;
+  -webkit-transform: rotateX(-8.448451336700702deg) rotateY(17.76169164905552deg)   ;
+  transform: rotateX(-8.448451336700702deg) rotateY(17.76169164905552deg)   ;
+
+}
 .jumbotron-top{
   width: 100%;/*calc(100% - 200px);*/
   background: rgb(0, 127, 200);
