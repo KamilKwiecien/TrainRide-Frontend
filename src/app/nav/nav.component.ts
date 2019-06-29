@@ -24,7 +24,7 @@ export class NavComponent implements OnInit {
   cost;
   distance;
   time;
-  info = 'Kielce-Warszawa-Bydgoszcz-Szczecin';
+  routeInfo;
 
   ngOnInit() {
     this.getAllStation();
@@ -82,6 +82,10 @@ export class NavComponent implements OnInit {
 
     this.routeService.getErrorMessage().subscribe(value => {
       this.errorRouteMessage = value;
+    });
+
+    this.routeService.getStations().subscribe(value => {
+      this.routeInfo = value;
     });
   }
 

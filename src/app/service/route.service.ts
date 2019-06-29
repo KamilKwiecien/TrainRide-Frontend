@@ -21,6 +21,7 @@ export class RouteService {
   time = new Subject<number>();
   error = new Subject<boolean>();
   errorMessage = new Subject<string>();
+  stations = new Subject<string>();
 
   s = new Subject<string>();
   i = new Subject<string>();
@@ -56,18 +57,21 @@ export class RouteService {
         this.i.next(post.stations[1].x+","+post.stations[1].y);
         this.i2.next(post.stations[1].x+","+post.stations[1].y);
         this.e.next(post.stations[1].x+","+post.stations[1].y);
+        this.stations.next(post.stations[0].stationName+" -> "+post.stations[1].stationName);
       }
       if(post.changesCount==1){
         this.s.next(post.stations[0].x+','+post.stations[0].y);
         this.i.next(post.stations[1].x+','+post.stations[1].y);
         this.i2.next(post.stations[2].x+','+post.stations[2].y);
         this.e.next(post.stations[2].x+','+post.stations[2].y);
+        this.stations.next(post.stations[0].stationName+" -> "+post.stations[1].stationName+" -> "+post.stations[2].stationName);
       }
       if(post.changesCount==2){
         this.s.next(post.stations[0].x+','+post.stations[0].y);
         this.i.next(post.stations[1].x+','+post.stations[1].y);
         this.i2.next(post.stations[2].x+','+post.stations[2].y);
         this.e.next(post.stations[3].x+','+post.stations[3].y);
+        this.stations.next(post.stations[0].stationName+" -> "+post.stations[1].stationName+" -> "+post.stations[2].stationName+" -> "+post.stations[3].stationName);
       }
     },
     error => {
@@ -138,6 +142,10 @@ export class RouteService {
 
   getErrorMessage(): Observable<string> {
     return this.errorMessage.asObservable();
+  }
+
+  getStations(): Observable<string> {
+    return this.stations.asObservable();
   }
 }
 
