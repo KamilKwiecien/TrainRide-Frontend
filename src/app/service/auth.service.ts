@@ -65,6 +65,18 @@ export class AuthService {
       });
   }
 
+  register(email: string, password: string, username: string) {
+    let headers = new HttpHeaders().set('Content-Type', 'application/json');
+    const register: Register = ({
+      email: email,
+      password: password,
+      userName: username
+    });
+    this.http.post<LoginResponse>('http://localhost:8080/trainRide/register', register, { headers: headers, observe: "response", withCredentials: true }).subscribe(post => {
+      console.log(post);
+    });
+  }
+
   logout() {
     this.http.get('http://localhost:8080/trainRide/logout', { withCredentials: true }).subscribe(get => {
     });
@@ -92,6 +104,12 @@ export interface Login {
   email?: string;
   password?: string;
   fbLogin?: boolean;
+}
+
+export interface Register {
+  email?: string;
+  password?: string;
+  userName?: string;
 }
 
 export interface LoginResponse {
