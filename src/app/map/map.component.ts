@@ -73,9 +73,6 @@ export class MapComponent implements OnInit {
 
 
   public route(start: any, finish: any) {
-    console.log(this.start);
-    console.log(this.intermediate);
-    console.log(this.finish);
     const params = {
       mode: 'fastest;car',
       waypoint0: 'geo!' + this.start,

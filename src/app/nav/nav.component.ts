@@ -3,6 +3,8 @@ import { Component, HostListener, OnInit } from '@angular/core';
 
 import { HttpStationService } from '../service/http-station.service';
 import { RouteService } from '../service/route.service';
+import { AuthService } from '../service/auth.service';
+
 
 @Component({
   selector: 'app-nav',
@@ -10,7 +12,7 @@ import { RouteService } from '../service/route.service';
   styleUrls: ['./nav.component.css']
 })
 export class NavComponent implements OnInit {
-  constructor(private routeService: RouteService, private mapService: MapService, private httpStationService: HttpStationService) { }
+  constructor(private authService: AuthService, private routeService: RouteService, private mapService: MapService, private httpStationService: HttpStationService) { }
 
   stations;
   startPoint = "Punkt początkowy";
@@ -25,6 +27,8 @@ export class NavComponent implements OnInit {
   distance;
   time;
   routeInfo;
+
+  availablePremium = false;
 
   ngOnInit() {
     this.getAllStation();
@@ -44,7 +48,15 @@ export class NavComponent implements OnInit {
   }
 
   setType(type: string) {
-    this.routeType = "Typ trasy: " + type;
+    if (type == 'shortest') {
+      this.routeType = "Typ trasy: Najkrótsza";
+    }
+    if (type == 'fastest') {
+      this.routeType = "Typ trasy: Najszybsza";
+    }
+    if (type == 'cheapest') {
+      this.routeType = "Typ trasy: Najtańsza";
+    }
     this.routeService.setType(type);
   }
 
@@ -87,6 +99,15 @@ export class NavComponent implements OnInit {
     this.routeService.getStations().subscribe(value => {
       this.routeInfo = value;
     });
+
+    this.authService.getUserInfo().subscribe(value => {
+      for (var item of value.roles) {
+        if(item.name=="userPremium"){
+          this.availablePremium =true;
+        }
+      }
+    });
+    this.authService.checkLogged();
   }
 
   @HostListener('window:resize', ['$event'])

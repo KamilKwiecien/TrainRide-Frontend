@@ -26,8 +26,10 @@
     </button>
     <div class="dropdown-menu" aria-labelledby="dropdownMenu2">
       <button (click)="setType('shortest')" class="dropdown-item" type="button">Najkrótsza</button>
-      <button (click)="setType('fastest')" class="dropdown-item" type="button">Najszybsza</button>
-      <button (click)="setType('cheapest')" class="dropdown-item" type="button">Najtańsza</button>
+      <button *ngIf="availablePremium" (click)="setType('fastest')" class="dropdown-item" type="button">Najszybsza</button>
+      <button *ngIf="availablePremium" (click)="setType('cheapest')" class="dropdown-item" type="button">Najtańsza</button>
+      <button *ngIf="!availablePremium" (click)="setType('fastest')" class="dropdown-item" type="button" disabled>Najszybsza (Premium)</button>
+      <button *ngIf="!availablePremium" (click)="setType('cheapest')" class="dropdown-item" type="button" disabled>Najtańsza (Premium)</button>
     </div>
   </div>
 

@@ -73,16 +73,15 @@ export class AuthService {
       userName: username
     });
     this.http.post<LoginResponse>('http://localhost:8080/trainRide/register', register, { headers: headers, observe: "response", withCredentials: true }).subscribe(post => {
-      console.log(post);
     });
   }
 
   logout() {
     this.http.get('http://localhost:8080/trainRide/logout', { withCredentials: true }).subscribe(get => {
+      this.router.navigateByUrl('/home');
     });
     this.checkLogged();
-    this.router.navigateByUrl('/home');
-
+    window.location.reload();
   }
 
   getLogged(): Observable<boolean> {
@@ -118,12 +117,12 @@ export interface LoginResponse {
   result?: string;
 }
 
-export interface UserInfo{
+export interface UserInfo {
   email?: string;
   user_name?: string;
   roles?: Array<UserRole>;
 }
 
-export interface UserRole{
-  name:string;
+export interface UserRole {
+  name: string;
 }
