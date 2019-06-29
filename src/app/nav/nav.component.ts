@@ -34,6 +34,7 @@ export class NavComponent implements OnInit {
     this.getAllStation();
     this.routeService.setWithChange(true);
     this.subcribeVariable();
+    this.setType('shortest');
   }
 
   setStartPoint(station) {
