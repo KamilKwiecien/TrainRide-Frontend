@@ -43,7 +43,7 @@
       <p>{{errorRouteMessage}}</p>
     </div>
 
-  <div *ngIf="foundRoute" id="routeInfo">
+  <div *ngIf="!errorRoute" id="routeInfo">
     <p>Przesiadki: {{changesCount}}</p>
     <p>Koszt: {{cost}}</p>
     <p>Dystans: {{distance}}</p>

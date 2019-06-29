@@ -19,6 +19,8 @@ export class RouteService {
   cost = new Subject<number>();
   distance = new Subject<number>();
   time = new Subject<number>();
+  error = new Subject<boolean>();
+  errorMessage = new Subject<string>();
 
   s = new Subject<string>();
   i = new Subject<string>();
@@ -38,7 +40,7 @@ export class RouteService {
       withChange: !this.withChange
     });
     this.http.post<PathResponse>('http://localhost:8080/trainRide/path/route', path, { headers: headers }).subscribe(post => {
-      console.log(post);
+      this.error.next(false);
       this.changesCount.next(post.changesCount);
       this.cost.next(post.cost);
       this.distance.next(post.distance);
@@ -67,6 +69,14 @@ export class RouteService {
         this.i2.next(post.stations[2].x+','+post.stations[2].y);
         this.e.next(post.stations[3].x+','+post.stations[3].y);
       }
+    },
+    error => {
+      this.error.next(true);
+      this.errorMessage.next(error.error.msg);
+      this.s.next('');
+      this.i.next('');
+      this.i2.next('');
+      this.e.next('');
     });
   }
 
@@ -120,6 +130,14 @@ export class RouteService {
 
   getE(): Observable<string> {
     return this.e.asObservable();
+  }
+
+  getError(): Observable<boolean> {
+    return this.error.asObservable();
+  }
+
+  getErrorMessage(): Observable<string> {
+    return this.errorMessage.asObservable();
   }
 }
 

@@ -17,9 +17,8 @@ export class NavComponent implements OnInit {
   endPoint = "Punkt docelowy";
   routeType = "Typ trasy";
 
-  foundRoute = true;
-  errorRoute = false;
-  errorRouteMessage = 'Trasa nie znaleziona';
+  errorRoute;
+  errorRouteMessage;
 
   changesCount;
   cost;
@@ -75,6 +74,14 @@ export class NavComponent implements OnInit {
 
     this.routeService.getTime().subscribe(value => {
       this.time = value;
+    });
+
+    this.routeService.getError().subscribe(value => {
+      this.errorRoute = value;
+    });
+
+    this.routeService.getErrorMessage().subscribe(value => {
+      this.errorRouteMessage = value;
     });
   }
 
