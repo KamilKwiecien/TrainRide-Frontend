@@ -72,7 +72,7 @@ export class AuthService {
       password: password,
       userName: username
     });
-    this.http.post<LoginResponse>('http://localhost:8080/trainRide/register', register, { headers: headers, observe: "response", withCredentials: true }).subscribe(post => {
+    this.http.post<LoginResponse>('http://localhost:8080/trainRide/user/register', register, { headers: headers, observe: "response", withCredentials: true }).subscribe(post => {
     });
   }
 
