@@ -51,4 +51,8 @@ export class AdminInfoComponent implements OnInit {
   addStation() {
     window.location.replace('addStation');
   }
+
+  editStation() {
+    window.location.replace('editStation');
+  }
 }

@@ -27,6 +27,7 @@ import { PayPalReturnComponent } from './pay-pal-return/pay-pal-return.component
 import { RegisterComponent } from './register/register.component';
 import { AdminInfoComponent } from './admin-info/admin-info.component';
 import { StationAddComponent } from './station-add/station-add';
+import { StationEditComponent } from './station-edit/station-edit';
 let config = new AuthServiceConfig([
   {
     id: FacebookLoginProvider.PROVIDER_ID,
@@ -57,6 +58,7 @@ PayPalReturnComponent,
     RegisterComponent,
     AdminInfoComponent,
     StationAddComponent,
+    StationEditComponent,
   ],
   imports: [
     MatDatepickerModule,

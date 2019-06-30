@@ -8,7 +8,7 @@ import { UserInfoComponent } from './user-info/user-info.component';
 import {RegisterComponent} from './register/register.component';
 import {AdminInfoComponent} from './admin-info/admin-info.component';
 import { StationAddComponent} from './station-add/station-add';
-
+import { StationEditComponent} from './station-edit/station-edit';
 
 const appRoutes: Routes = [
   {
@@ -43,6 +43,10 @@ const appRoutes: Routes = [
   {
     path: 'addStation',
     component: StationAddComponent
+  },
+  {
+    path: 'editStation',
+    component: StationEditComponent
   },
   {
     path: '**',

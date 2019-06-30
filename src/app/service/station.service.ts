@@ -24,6 +24,18 @@ export class StationService {
       window.location.replace('http://localhost:4200/admin');
     });
   }
+  editStation(stationName: string, x: string, y: string) {
+    const headers = new HttpHeaders().set('Content-Type', 'application/json');
+    const add: StationInfo = ({
+      stationName,
+      x,
+      y,
+    });
+    this.http.post('http://localhost:8080/trainRide/station/update', add, { headers,  withCredentials: true }).subscribe(post => {
+      window.alert('Edytowano poprawnie');
+      window.location.replace('http://localhost:4200/admin');
+    });
+  }
 
   getStationInfo(): Observable<StationInfo> {
     return this.StationInfo.asObservable();

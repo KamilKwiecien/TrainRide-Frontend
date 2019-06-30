@@ -1,0 +1,50 @@
+<app-header></app-header>
+<app-user-bar *ngIf="logged"></app-user-bar>
+<div class="dane" id="userInfo" *ngIf="logged">
+  <div *ngIf="rola!=='admin'" class="info"> Nie posiadasz roli administratora</div>
+
+
+  <div *ngIf="rola=='admin'">
+    <div class="info">Panel Administracyjny</div>
+    <br>
+    <h1 class="info">Dodawanie stacji</h1>
+
+    <div id="formularz">
+
+      <form #f="ngForm" (ngSubmit)="editStation()" novalidate>
+
+        <div >
+          <label  for="stationName">Podaj nazwę stacji</label>
+          <div >
+            <input id="stationName" name="stationName"  ngModel required #stationName="ngModel"><br>
+
+          </div>
+        </div>
+        <br>
+        <div >
+          <label for="x">Podaj współrzędną X</label>
+          <div >
+            <input  id="x" name="x" ngModel required #x="ngModel"><br>
+
+          </div>
+        </div>
+        <br>
+        <div >
+          <label for="y">Podaj współrzędną Y</label>
+          <div >
+            <input type="y" id="y" name="y" ngModel required #y="ngModel"><br>
+
+          </div>
+        </div>
+        <br>
+      </form>
+      <button (click)="editStation();" class="button1">Dodaj</button>
+        </div>
+
+        <br>
+
+
+    </div>
+
+  </div>
+<app-footer></app-footer>
