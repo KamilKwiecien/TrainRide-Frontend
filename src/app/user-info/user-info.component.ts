@@ -1,3 +1,4 @@
+import { PayService } from './../service/pay.service';
 import { AuthService } from './../service/auth.service';
 import { Component, OnInit } from '@angular/core';
 
@@ -17,11 +18,15 @@ export class UserInfoComponent implements OnInit {
   rola: string;
   email: string;
 
-  constructor(private authService: AuthService) {
+  constructor(private authService: AuthService, private payService: PayService) {
   }
 
   ngOnInit() {
     this.subcribeVariable();
+  }
+
+  buy(email:string){
+    this.payService.pay(email);
   }
 
   private subcribeVariable() {
