@@ -4,7 +4,7 @@
 </div>
 <app-user-bar *ngIf="logged"></app-user-bar>
 
-<a *ngIf="logged == false" class="info" href = "http://localhost:4200/home">Zaloguj</a>
+<a *ngIf="logged == false" class="info" href="http://localhost:4200/home">Zaloguj</a>
 <div class="dane" id="userInfo" *ngIf="logged">
 
   <span *ngIf="logged" class="info">Informacje o użytkowniku</span>
@@ -12,28 +12,39 @@
   <div class="divTable">
     <div class="divTableBody">
       <div class="divTableRow">
-        <div class="divTableCell">   Adres mailowy użytkownika</div>
-        <div class="divTableCell">   {{userInfo.email}}</div>
+        <div class="divTableCell"> Adres mailowy użytkownika</div>
+        <div class="divTableCell"> {{userInfo.email}}</div>
       </div>
       <div class="divTableRow">
-        <div class="divTableCell">   Nazwa użytkownika</div>
-        <div class="divTableCell">   {{userInfo.userName}}</div>
+        <div class="divTableCell"> Nazwa użytkownika</div>
+        <div class="divTableCell"> {{userInfo.userName}}</div>
         {{userInfo.username}}
       </div>
       <div class="divTableRow">
-      <div class="divTableCell">Role użytkownika</div>
-      <div class="divTableCell"> <span *ngFor="let role of userInfo.roles">{{role.name+","}}</span></div>
-    </div>
+        <div class="divTableCell">Role użytkownika</div>
+        <div class="divTableCell"> <span *ngFor="let role of userInfo.roles">{{role.name+","}}</span></div>
+      </div>
       <div class="divTableRow">
         <div class="divTableCell">Premium</div>
 
         <div class="divTableCell" *ngIf="(rola == 'userPremium')">TAK</div>
-          <div class="divTableCell" *ngIf="(rola  != 'userPremium')"><button class="button1">KUP</button></div>
+        <div class="divTableCell" *ngIf="(rola  != 'userPremium')"><button class="button1">KUP</button></div>
 
       </div>
     </div>
   </div>
 
 
-  </div>
+</div>
+<div *ngIf="paymentInfo">
+  <p>{{paymentInfo.createTime}}</p>
+  <p>{{paymentInfo.currency}}</p>
+  <p>{{paymentInfo.description}}</p>
+  <p>{{paymentInfo.email}}</p>
+  <p>{{paymentInfo.id}}</p>
+  <p>{{paymentInfo.paymentID}}</p>
+  <p>{{paymentInfo.paymentTime}}</p>
+  <p>{{paymentInfo.status}}</p>
+  <p>{{paymentInfo.totalAmount}}</p>
+</div>
 <app-footer></app-footer>

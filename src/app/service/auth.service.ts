@@ -1,4 +1,4 @@
-import {HttpClient, HttpHeaders} from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Subject, Observable } from 'rxjs';
 import { Router } from '@angular/router';
@@ -11,7 +11,7 @@ export class AuthService {
 
   logged = new Subject<boolean>();
   loggedError = new Subject<string>();
-  paymentAll = new Subject<PaymentResponse>();
+  paymentInfo = new Subject<PaymentRespone>();
   userInfo = new Subject<UserInfo>();
 
 
@@ -39,16 +39,12 @@ export class AuthService {
     const headers = new HttpHeaders().set('Content-Type', 'application/json');
     const res: Res = ({
       email,
-
     });
 
-    this.http.post<PaymentResponse>('http://localhost:8080/trainRide/payment/user'  , res, { headers,  observe: 'response', withCredentials: true })
+    this.http.post('http://localhost:8080/trainRide/payment/user', res, { headers, observe: 'response', withCredentials: true })
       .subscribe(post => {
-        console.log(post.body[0].paymentID);
-        console.log(post.body[0].description);
-
-
-  });
+        this.paymentInfo.next(post.body[0]);
+      });
   }
 
 
@@ -116,8 +112,9 @@ export class AuthService {
   getUserInfo(): Observable<UserInfo> {
     return this.userInfo.asObservable();
   }
-  getPaymentAll(): Observable<PaymentResponse> {
-    return this.paymentAll.asObservable();
+
+  getPaymentInfo(): Observable<PaymentRespone> {
+    return this.paymentInfo.asObservable();
   }
 }
 
@@ -154,8 +151,15 @@ export interface UserRole {
 export interface Res {
   email: string;
 }
-export interface PaymentResponse {
-  description?: string;
-  email?: string;
-  paymentID?: string;
+
+export interface PaymentRespone {
+  createTime?:string;
+  currency?:string;
+  description?:string;
+  email?:string;
+  id?:number;
+  paymentID?:string;
+  paymentTime?:string;
+  status?:string;
+  totalAmount?:string;
 }

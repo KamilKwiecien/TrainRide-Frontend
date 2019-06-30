@@ -1,4 +1,4 @@
-import { AuthService} from './../service/auth.service';
+import { AuthService } from './../service/auth.service';
 import { Component, OnInit } from '@angular/core';
 
 
@@ -14,7 +14,6 @@ export class UserInfoComponent implements OnInit {
   logged;
   userInfo;
   paymentInfo;
-  desc: string;
   rola: string;
   email = 'testowy mail';
 
@@ -22,13 +21,7 @@ export class UserInfoComponent implements OnInit {
   }
 
   ngOnInit() {
-
     this.subcribeVariable();
-
-
-    console.log(this.desc);
-
-
   }
 
   private subcribeVariable() {
@@ -55,13 +48,9 @@ export class UserInfoComponent implements OnInit {
 
     this.authService.checkPayment(email);
 
-    this.authService.getPaymentAll().subscribe(value1 => {
-  this.paymentInfo = value1;
-
-
-  this.desc = value1.description;
-
-});
+    this.authService.getPaymentInfo().subscribe(value => {
+      this.paymentInfo = value;
+    });
   }
 
 }
