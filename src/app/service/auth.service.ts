@@ -1,7 +1,8 @@
-import { HttpClient, HttpHeaders } from '@angular/common/http';
+import {HttpClient, HttpHeaders} from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Subject, Observable } from 'rxjs';
 import { Router } from '@angular/router';
+
 
 @Injectable({
   providedIn: 'root'
@@ -10,7 +11,7 @@ export class AuthService {
 
   logged = new Subject<boolean>();
   loggedError = new Subject<string>();
-
+  paymentAll = new Subject<PaymentResponse>();
   userInfo = new Subject<UserInfo>();
 
 
@@ -20,8 +21,8 @@ export class AuthService {
 
   checkLogged() {
     if (localStorage.getItem('session_cookie')) {
-      let headers = new HttpHeaders().set('Cookie', 'JSESSIONID=' + localStorage.getItem('session_cookie'));
-      this.http.get<UserInfo>('http://localhost:8080/trainRide/user/logged', { headers: headers, withCredentials: true }).subscribe(get => {
+      const headers = new HttpHeaders().set('Cookie', 'JSESSIONID=' + localStorage.getItem('session_cookie'));
+      this.http.get<UserInfo>('http://localhost:8080/trainRide/user/logged', { headers, withCredentials: true }).subscribe(get => {
         if (get) {
           this.logged.next(true);
           this.userInfo.next(get);
@@ -34,18 +35,35 @@ export class AuthService {
     }
   }
 
+  checkPayment(email: string) {
+    const headers = new HttpHeaders().set('Content-Type', 'application/json');
+    const res: Res = ({
+      email,
+
+    });
+
+    this.http.post<PaymentResponse>('http://localhost:8080/trainRide/payment/user'  , res, { headers,  observe: 'response', withCredentials: true })
+      .subscribe(post => {
+        console.log(post.body[0].paymentID);
+        console.log(post.body[0].description);
+
+
+  });
+  }
+
+
   login(email: string, password: string, fbLogin: boolean) {
     this.loggedError.next('');
     localStorage.removeItem('session_cookie');
     this.http.get('http://localhost:8080/trainRide/logout', { withCredentials: true }).subscribe(get => {
     });
-    let headers = new HttpHeaders().set('Content-Type', 'application/json');
+    const headers = new HttpHeaders().set('Content-Type', 'application/json');
     const login: Login = ({
-      email: email,
-      password: password,
-      fbLogin: fbLogin
+      email,
+      password,
+      fbLogin
     });
-    this.http.post<LoginResponse>('http://localhost:8080/trainRide/login', login, { headers: headers, observe: "response", withCredentials: true }).subscribe(post => {
+    this.http.post<LoginResponse>('http://localhost:8080/trainRide/login', login, { headers, observe: 'response', withCredentials: true }).subscribe(post => {
 
       if (post.body.msg == 'zalogowano') {
         localStorage.setItem('session_cookie', post.body.cookie);
@@ -65,14 +83,17 @@ export class AuthService {
       });
   }
 
-  register(email: string, password: string, username: string) {
-    let headers = new HttpHeaders().set('Content-Type', 'application/json');
+  register(email: string, password: string, userName: string) {
+    const headers = new HttpHeaders().set('Content-Type', 'application/json');
     const register: Register = ({
-      email: email,
-      password: password,
-      userName: username
+      email,
+      password,
+      userName
     });
-    this.http.post<LoginResponse>('http://localhost:8080/trainRide/user/register', register, { headers: headers, observe: "response", withCredentials: true }).subscribe(post => {
+    this.http.post<LoginResponse>('http://localhost:8080/trainRide/user/register', register, { headers, observe: 'response', withCredentials: true }).subscribe(post => {
+      window.alert('Zarejestrowano');
+      window.location.replace('http://localhost:4200/home');
+
     });
   }
 
@@ -94,6 +115,9 @@ export class AuthService {
 
   getUserInfo(): Observable<UserInfo> {
     return this.userInfo.asObservable();
+  }
+  getPaymentAll(): Observable<PaymentResponse> {
+    return this.paymentAll.asObservable();
   }
 }
 
@@ -125,4 +149,13 @@ export interface UserInfo {
 
 export interface UserRole {
   name: string;
+}
+
+export interface Res {
+  email: string;
+}
+export interface PaymentResponse {
+  description?: string;
+  email?: string;
+  paymentID?: string;
 }

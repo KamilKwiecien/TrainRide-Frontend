@@ -26,25 +26,14 @@
     </div>
       <div class="divTableRow">
         <div class="divTableCell">Premium</div>
-        <div *ngFor="let role of userInfo.roles">
-        <div class="divTableCell" *ngIf="(role.name == 'premium')">TAK</div>
-          <div class="divTableCell" *ngIf="(role.name != 'premium')"><button class="button1">KUP</button></div>
-       </div>
+
+        <div class="divTableCell" *ngIf="(rola == 'userPremium')">TAK</div>
+          <div class="divTableCell" *ngIf="(rola  != 'userPremium')"><button class="button1">KUP</button></div>
+
       </div>
     </div>
   </div>
 
 
-  <div >
-
-    <div >
-      <br>
-
-    </div>
-  </div>
-
-  <div >
-    {{role.name}}
-  </div>
   </div>
 <app-footer></app-footer>
