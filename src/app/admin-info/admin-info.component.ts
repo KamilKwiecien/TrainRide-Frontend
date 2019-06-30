@@ -4,13 +4,13 @@ import { Component, OnInit } from '@angular/core';
 
 
 @Component({
-  selector: 'app-user-info',
-  templateUrl: './user-info.component.html',
-  styleUrls: ['./user-info.component.css']
+  selector: 'app-admin-info',
+  templateUrl: './admin-info.component.html',
+  styleUrls: ['./admin-info.component.css']
 })
 
-export class UserInfoComponent implements OnInit {
-
+export class AdminInfoComponent implements OnInit {
+  isAdmin;
   logged;
   userInfo;
   paymentInfo;
@@ -32,25 +32,23 @@ export class UserInfoComponent implements OnInit {
     });
     this.authService.getUserInfo().subscribe(value => {
       this.userInfo = value;
-
-      this.email = this.userInfo.email;
       for (const role of this.userInfo.roles) {
-        this.rola = role.name;
+        if(role.name=='admin')
+        {
+          this.rola = role.name;
+        }
+
 
       }
 
-      this.subscribePayments(this.userInfo.email);
+
+
     });
 
   }
 
-  public subscribePayments(email: string) {
 
-    this.authService.checkPayment(email);
-
-    this.authService.getPaymentInfo().subscribe(value => {
-      this.paymentInfo = value;
-    });
+  addStation() {
+    window.location.replace('addStation');
   }
-
 }

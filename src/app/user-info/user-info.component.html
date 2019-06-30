@@ -1,10 +1,11 @@
 <app-header></app-header>
 <div *ngIf="!logged">
   <h1 class="info">Musisz być zalogowany, aby przelądać informacje o użytkowniku</h1>
+  <a  class="button2" href="http://localhost:4200/home"><h1>Zaloguj</h1></a>
 </div>
 <app-user-bar *ngIf="logged"></app-user-bar>
 
-<a *ngIf="logged == false" class="info" href="http://localhost:4200/home">Zaloguj</a>
+
 <div class="dane" id="userInfo" *ngIf="logged">
 
   <span *ngIf="logged" class="info">Informacje o użytkowniku</span>
@@ -18,7 +19,7 @@
       <div class="divTableRow">
         <div class="divTableCell"> Nazwa użytkownika</div>
         <div class="divTableCell"> {{userInfo.userName}}</div>
-        {{userInfo.username}}
+
       </div>
       <div class="divTableRow">
         <div class="divTableCell">Role użytkownika</div>
@@ -36,15 +37,40 @@
 
 
 </div>
-<div *ngIf="paymentInfo">
-  <p>{{paymentInfo.createTime}}</p>
-  <p>{{paymentInfo.currency}}</p>
-  <p>{{paymentInfo.description}}</p>
-  <p>{{paymentInfo.email}}</p>
-  <p>{{paymentInfo.id}}</p>
-  <p>{{paymentInfo.paymentID}}</p>
-  <p>{{paymentInfo.paymentTime}}</p>
-  <p>{{paymentInfo.status}}</p>
-  <p>{{paymentInfo.totalAmount}}</p>
+
+<div *ngIf="paymentInfo" class="divTable" class="dane2">
+  <div class="divTableBody">
+    <div class="divTableRow">
+      <div class="divTableCell"> ID Płatności</div>
+      <div class="divTableCell"><p>{{paymentInfo.paymentID}}</p></div>
+    </div>
+
+    <div class="divTableRow">
+      <div class="divTableCell"> Czas zapłaty</div>
+      <div class="divTableCell">   <p>{{paymentInfo.paymentTime}}</p></div>
+
+
+    </div>
+    <div class="divTableRow">
+      <div class="divTableCell"> Czas utworzenia</div>
+      <div class="divTableCell">   <p>{{paymentInfo.createTime}}</p></div>
+
+
+    </div>
+    <div class="divTableRow">
+      <div class="divTableCell">Opis płatności</div>
+      <div class="divTableCell"> <p>{{paymentInfo.description}}</p></div>
+    </div>
+    <div class="divTableRow">
+      <div class="divTableCell">Wartosć płatności</div>
+      <div class="divTableCell"> <p>{{paymentInfo.totalAmount}} {{paymentInfo.currency}}</p></div>
+    </div>
+    <div class="divTableRow">
+      <div class="divTableCell">Status płatności</div>
+      <div class="divTableCell">  <p>{{paymentInfo.status}}</p></div>
+    </div>
+
+  </div>
 </div>
+
 <app-footer></app-footer>

@@ -21,6 +21,7 @@ a:hover{
   transform: rotateX(-8.448451336700702deg) rotateY(17.76169164905552deg)   ;
 
 }
+
 .jumbotron-top{
   width: 100%;/*calc(100% - 200px);*/
   background: rgb(0, 127, 200);

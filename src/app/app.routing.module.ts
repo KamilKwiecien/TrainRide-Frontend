@@ -6,6 +6,8 @@ import { HomeComponent } from './home/home.component';
 import {FBLoginComponent} from './fblogin/fblogin.component';
 import { UserInfoComponent } from './user-info/user-info.component';
 import {RegisterComponent} from './register/register.component';
+import {AdminInfoComponent} from './admin-info/admin-info.component';
+import { StationAddComponent} from './station-add/station-add';
 
 
 const appRoutes: Routes = [
@@ -23,6 +25,10 @@ const appRoutes: Routes = [
     component: UserInfoComponent
   },
   {
+    path: 'admin',
+    component: AdminInfoComponent
+  },
+  {
     path: 'payPalCancel',
     component: PayPalCancelComponent
   },
@@ -33,6 +39,10 @@ const appRoutes: Routes = [
   {
     path: 'register',
     component: RegisterComponent
+  },
+  {
+    path: 'addStation',
+    component: StationAddComponent
   },
   {
     path: '**',

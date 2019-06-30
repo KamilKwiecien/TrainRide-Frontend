@@ -1,0 +1,24 @@
+<app-header></app-header>
+<div *ngIf="!logged">
+  <h1 class="info">Musisz być zalogowany, aby przelądać informacje o użytkowniku</h1>
+  <a  class="button1" href="http://localhost:4200/home"><h1>Zaloguj</h1></a>
+</div>
+<app-user-bar *ngIf="logged"></app-user-bar>
+
+
+<div class="dane" id="userInfo" *ngIf="logged">
+  <div *ngIf="rola!=='admin'" class="info"> Nie posiadasz roli administratora</div>
+
+
+  <div *ngIf="rola=='admin'">
+    <div class="info">Panel Administracyjny</div>
+    <br>
+    <h1 class="info">Obsługa stacji</h1>
+    <button mat-button class="button2"(click)="addStation()">Dodaj stację</button> <button class="button2">Edytuj stację</button> <button class="button2">Usuń stację</button>
+    <h1 class="info">Obsługa połączeń</h1>
+    <button class="button2">Dodaj połączenie</button>
+
+</div>
+
+
+<app-footer></app-footer>
