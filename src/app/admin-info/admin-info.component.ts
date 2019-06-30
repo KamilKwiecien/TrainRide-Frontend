@@ -10,10 +10,10 @@ import { Component, OnInit } from '@angular/core';
 })
 
 export class AdminInfoComponent implements OnInit {
-  isAdmin;
+
   logged;
   userInfo;
-  paymentInfo;
+
   rola: string;
   email: string;
 
@@ -54,5 +54,21 @@ export class AdminInfoComponent implements OnInit {
 
   editStation() {
     window.location.replace('editStation');
+  }
+
+  deleteStation() {
+    window.location.replace('deleteStation');
+  }
+
+  addConn() {
+    window.location.replace('addConn');
+  }
+
+  editConn() {
+    window.location.replace('editConn');
+  }
+
+  deleteConn() {
+    window.location.replace('deleteConn');
   }
 }

@@ -1,0 +1,33 @@
+<app-header></app-header>
+<app-user-bar *ngIf="logged"></app-user-bar>
+<div class="dane" id="userInfo" *ngIf="logged">
+  <div *ngIf="rola!=='admin'" class="info"> Nie posiadasz roli administratora</div>
+
+
+  <div *ngIf="rola=='admin'">
+    <div class="info">Panel Administracyjny</div>
+    <br>
+    <h1 class="info">Usuwanie stacji</h1>
+
+    <div id="formularz">
+
+      <form #f="ngForm" (ngSubmit)="deleteStation()" novalidate>
+
+        <div >
+          <label  for="stationName">Podaj nazwę stacji</label>
+          <div >
+            <input id="stationName" name="stationName"  ngModel required #stationName="ngModel"><br>
+
+          </div>
+        </div>
+        <br>
+
+      </form>
+        </div>
+
+
+      <button (click)="deleteStation();" class="button1">Usuń</button>
+
+
+  </div></div>
+<app-footer></app-footer>

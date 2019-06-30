@@ -9,7 +9,10 @@ import {RegisterComponent} from './register/register.component';
 import {AdminInfoComponent} from './admin-info/admin-info.component';
 import { StationAddComponent} from './station-add/station-add';
 import { StationEditComponent} from './station-edit/station-edit';
-
+import { StationDeleteComponent } from './station-delete/station-delete';
+import {ConnAddComponent} from './conn-add/conn-add';
+import {ConnEditComponent} from './conn-edit/conn-edit';
+import {ConnDeleteComponent} from './conn-delete/conn-delete';
 const appRoutes: Routes = [
   {
     path: '',
@@ -47,6 +50,22 @@ const appRoutes: Routes = [
   {
     path: 'editStation',
     component: StationEditComponent
+  },
+  {
+    path: 'deleteStation',
+    component: StationDeleteComponent
+  },
+ {
+    path: 'editConn',
+    component: ConnEditComponent
+  },
+  {
+    path: 'addConn',
+    component: ConnAddComponent
+  },
+  {
+    path: 'deleteConn',
+    component: ConnDeleteComponent
   },
   {
     path: '**',

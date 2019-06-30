@@ -1,0 +1,42 @@
+<app-header></app-header>
+<app-user-bar *ngIf="logged"></app-user-bar>
+<div class="dane" id="userInfo" *ngIf="logged">
+  <div *ngIf="rola!=='admin'" class="info"> Nie posiadasz roli administratora</div>
+
+
+  <div *ngIf="rola=='admin'">
+    <div class="info">Panel Administracyjny</div>
+    <br>
+    <h1 class="info">Edycja połączenia</h1>
+
+    <div id="formularz">
+
+      <form #f="ngForm" (ngSubmit)="addConn()" novalidate>
+
+        <div >
+          <label  for="formSourceStation">Podaj nazwę stacji początkowej</label>
+          <div >
+            <input id="formSourceStation" name="formSourceStation"  ngModel required #formSourceStation="ngModel"><br>
+
+          </div>
+        </div>
+        <br>
+        <div >
+          <label for="formDestinationStation">Podaj nazwę stacji docelowej</label>
+          <div >
+            <input  id="formDestinationStation" name="formDestinationStation" ngModel required #formDestinationStation="ngModel"><br>
+
+          </div>
+        </div>
+
+      </form>
+      <button (click)="deleteConn();" class="button1">Dodaj</button>
+        </div>
+
+        <br>
+
+
+    </div>
+
+  </div>
+<app-footer></app-footer>

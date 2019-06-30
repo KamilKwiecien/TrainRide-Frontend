@@ -1,0 +1,66 @@
+<app-header></app-header>
+<app-user-bar *ngIf="logged"></app-user-bar>
+<div class="dane" id="userInfo" *ngIf="logged">
+  <div *ngIf="rola!=='admin'" class="info"> Nie posiadasz roli administratora</div>
+
+
+  <div *ngIf="rola=='admin'">
+    <div class="info">Panel Administracyjny</div>
+    <br>
+    <h1 class="info">Edycja połączenia</h1>
+
+    <div id="formularz">
+
+      <form #f="ngForm" (ngSubmit)="addConn()" novalidate>
+
+        <div >
+          <label  for="formSourceStation">Podaj nazwę stacji początkowej</label>
+          <div >
+            <input id="formSourceStation" name="formSourceStation"  ngModel required #formSourceStation="ngModel"><br>
+
+          </div>
+        </div>
+        <br>
+        <div >
+          <label for="formDestinationStation">Podaj nazwę stacji docelowej</label>
+          <div >
+            <input  id="formDestinationStation" name="formDestinationStation" ngModel required #formDestinationStation="ngModel"><br>
+
+          </div>
+        </div>
+        <br>
+        <div >
+          <label for="formDistance">Podaj odległość</label>
+          <div >
+            <input  id="formDistance" name="formDistance" ngModel required #formDistance="ngModel"><br>
+
+          </div>
+        </div>
+        <br>
+        <div >
+          <label for="formTravelTime">Podaj czas podróży</label>
+          <div >
+            <input  id="formTravelTime" name="formTravelTime" ngModel required #formTravelTime="ngModel"><br>
+
+          </div>
+        </div>
+        <br>
+        <div >
+          <label for="formCost">Podaj koszt podróży</label>
+          <div >
+            <input  id="formCost" name="formCost" ngModel required #formCost="ngModel"><br>
+
+          </div>
+        </div>
+        <br>
+      </form>
+      <button (click)="editConn();" class="button1">Dodaj</button>
+        </div>
+
+        <br>
+
+
+    </div>
+
+  </div>
+<app-footer></app-footer>
