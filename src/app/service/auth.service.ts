@@ -89,7 +89,6 @@ export class AuthService {
     this.http.post<LoginResponse>('http://localhost:8080/trainRide/user/register', register, { headers, observe: 'response', withCredentials: true }).subscribe(post => {
       window.alert('Zarejestrowano');
       window.location.replace('http://localhost:4200/home');
-
     });
   }
 
