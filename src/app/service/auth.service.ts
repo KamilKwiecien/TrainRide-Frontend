@@ -2,6 +2,7 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Subject, Observable } from 'rxjs';
 import { Router } from '@angular/router';
+import {ConnInfo} from './station.service';
 
 
 @Injectable({
@@ -46,8 +47,18 @@ export class AuthService {
         this.paymentInfo.next(post.body[0]);
       });
   }
+  deleteUser(password: string)
+  {
+    const headers = new HttpHeaders().set('Content-Type', 'application/json');
+    const rem: UserInfo2 = ({
+      password
 
-
+    });
+    this.http.post('http://localhost:8080/trainRide/user/deleteMe', rem, { headers,  withCredentials: true }).subscribe(post => {
+      window.alert('Usunięto');
+      window.location.replace('http://localhost:4200/user');
+    });
+  }
   login(email: string, password: string, fbLogin: boolean) {
     this.loggedError.next('');
     localStorage.removeItem('session_cookie');
@@ -142,7 +153,9 @@ export interface UserInfo {
   user_name?: string;
   roles?: Array<UserRole>;
 }
-
+export interface UserInfo2 {
+  password?: string;
+}
 export interface UserRole {
   name: string;
 }

@@ -29,7 +29,9 @@ export class UserInfoComponent implements OnInit {
     this.wait = 'Czekaj na przekierowanie na stronę płatności.';
     this.payService.pay(email);
   }
-
+  deleteUser() {
+    window.location.replace('deleteUser');
+  }
   private subcribeVariable() {
     this.authService.checkLogged();
 

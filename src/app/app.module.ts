@@ -32,6 +32,7 @@ import { StationDeleteComponent } from './station-delete/station-delete';
 import {ConnAddComponent} from './conn-add/conn-add';
 import {ConnEditComponent} from './conn-edit/conn-edit';
 import {ConnDeleteComponent} from './conn-delete/conn-delete';
+import {UserDeleteComponent} from './user-delete/user-delete';
 
 let config = new AuthServiceConfig([
   {
@@ -68,6 +69,7 @@ PayPalReturnComponent,
     ConnAddComponent,
     ConnEditComponent,
     ConnDeleteComponent,
+    UserDeleteComponent
   ],
   imports: [
     MatDatepickerModule,
