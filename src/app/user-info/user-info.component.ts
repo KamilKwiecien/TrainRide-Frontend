@@ -11,7 +11,7 @@ import { Component, OnInit } from '@angular/core';
 })
 
 export class UserInfoComponent implements OnInit {
-
+  wait;
   logged;
   userInfo;
   paymentInfo;
@@ -25,7 +25,8 @@ export class UserInfoComponent implements OnInit {
     this.subcribeVariable();
   }
 
-  buy(email:string){
+  buy(email: string) {
+    this.wait = 'Czekaj na przekierowanie na stronę płatności.';
     this.payService.pay(email);
   }
 
